@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760">
+  <rect width="1200" height="760" fill="#171717"/>
+  <g fill="none" stroke="#efeee9" stroke-width="2">
+    <circle cx="230" cy="380" r="92"/>
+    <circle cx="600" cy="225" r="92"/>
+    <circle cx="970" cy="380" r="92"/>
+    <circle cx="600" cy="560" r="92"/>
+    <path d="M315 344L515 261M685 261l200 83M884 419L684 522M516 522L316 419"/>
+  </g>
+  <circle cx="600" cy="380" r="42" fill="#a19ea2"/>
+  <text x="54" y="74" fill="#efeee9" font-family="Helvetica,Arial,sans-serif" font-size="24" letter-spacing="6">WORK / 03</text>
+  <text x="600" y="397" text-anchor="middle" fill="#0d0d0d" font-family="Helvetica,Arial,sans-serif" font-size="28">GUILD</text>
+  <text x="600" y="708" text-anchor="middle" fill="#efeee9" font-family="Helvetica,Arial,sans-serif" font-size="58">HUMANS × AGENTS</text>
+</svg>

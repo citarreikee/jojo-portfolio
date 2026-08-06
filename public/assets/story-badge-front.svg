@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1400" viewBox="0 0 1000 1400">
+  <rect width="1000" height="1400" rx="54" fill="#efeee9"/>
+  <path d="M72 116h856" stroke="#111111" stroke-opacity=".22" stroke-width="3"/>
+
+  <text x="72" y="230" fill="#111111" fill-opacity=".58" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="40" letter-spacing="7">BASED IN</text>
+  <text x="72" y="322" fill="#111111" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="68">Shenzhen, China</text>
+  <path d="M72 404h856" stroke="#111111" stroke-opacity=".22" stroke-width="3"/>
+
+  <text x="72" y="520" fill="#111111" fill-opacity=".58" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="40" letter-spacing="7">PRACTICE</text>
+  <text x="72" y="622" fill="#111111" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="60">AI Agents</text>
+  <text x="72" y="710" fill="#111111" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="60">Spatial Intelligence</text>
+  <text x="72" y="798" fill="#111111" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="60">Physical AI</text>
+  <path d="M72 890h856" stroke="#111111" stroke-opacity=".22" stroke-width="3"/>
+
+  <text x="72" y="1008" fill="#111111" fill-opacity=".58" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="40" letter-spacing="7">SINCE</text>
+  <text x="72" y="1140" fill="#111111" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="112">2019</text>
+  <path d="M72 1284h856" stroke="#111111" stroke-opacity=".22" stroke-width="3"/>
+</svg>

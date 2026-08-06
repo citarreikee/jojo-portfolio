@@ -1,0 +1,809 @@
+{
+  "objectives": [
+    {
+      "id": "objective-001",
+      "title": "为新角色建立长期记忆与人格骨架",
+      "summary": "围绕记忆、人格设定和工作流编排，先搭出一个可持续演化的 Agent 基底。",
+      "preferredLead": "agent-d002",
+      "preferredParticipants": [
+        "agent-d001",
+        "agent-d003",
+        "agent-b00a",
+        "agent-a002"
+      ],
+      "requiredCapabilities": [
+        "agent-creation",
+        "memory",
+        "planning",
+        "continuity"
+      ],
+      "swarmMin": 4,
+      "swarmMax": 5
+    },
+    {
+      "id": "objective-002",
+      "title": "把外部舆情收敛成一个明确判断",
+      "summary": "收集外部讨论、请人类把关，再把非共识信号压缩成可执行方向。",
+      "preferredLead": "agent-d007",
+      "preferredParticipants": [
+        "agent-a006",
+        "agent-b00e",
+        "agent-b00a",
+        "agent-a002"
+      ],
+      "requiredCapabilities": [
+        "social-monitoring",
+        "analysis",
+        "prioritization",
+        "human-check"
+      ],
+      "swarmMin": 4,
+      "swarmMax": 5
+    },
+    {
+      "id": "objective-003",
+      "title": "把 GitHub issue 修到可交付",
+      "summary": "定位根因、完成修复、交给风格和评审节点压成一个能演示的补丁。",
+      "preferredLead": "agent-b00c",
+      "preferredParticipants": [
+        "agent-c001",
+        "agent-d007",
+        "agent-a002",
+        "agent-b00a"
+      ],
+      "requiredCapabilities": [
+        "debugging",
+        "repair",
+        "review",
+        "handoff"
+      ],
+      "swarmMin": 4,
+      "swarmMax": 5
+    },
+    {
+      "id": "objective-004",
+      "title": "把飞书知识沉淀成团队可复用面板",
+      "summary": "统一权限、文档、知识库和同步路径，让材料不再散落。",
+      "preferredLead": "agent-a007",
+      "preferredParticipants": [
+        "agent-b00a",
+        "agent-d001",
+        "agent-d007",
+        "agent-b00e",
+        "agent-d014"
+      ],
+      "requiredCapabilities": [
+        "document-ops",
+        "knowledge-base",
+        "planning",
+        "documentation"
+      ],
+      "swarmMin": 4,
+      "swarmMax": 6
+    },
+    {
+      "id": "objective-005",
+      "title": "为专家分身做一个可演示的人格样机",
+      "summary": "让人格孵化、长期记忆、关系模拟和视觉打磨协同成一个可观看 demo。",
+      "preferredLead": "agent-d002",
+      "preferredParticipants": [
+        "agent-d001",
+        "agent-d004",
+        "agent-d005",
+        "agent-c001",
+        "agent-d006"
+      ],
+      "requiredCapabilities": [
+        "agent-creation",
+        "simulation",
+        "roleplay",
+        "visual-quality"
+      ],
+      "swarmMin": 4,
+      "swarmMax": 6
+    },
+    {
+      "id": "objective-006",
+      "title": "策划一轮对外叙事传播",
+      "summary": "将判断框架整理成叙事，再通过外部渠道形成一轮真实反馈。",
+      "preferredLead": "agent-b00e",
+      "preferredParticipants": [
+        "agent-a006",
+        "agent-c001",
+        "agent-b00a",
+        "agent-a002",
+        "agent-d015"
+      ],
+      "requiredCapabilities": [
+        "framing",
+        "social-publishing",
+        "polish",
+        "workflow"
+      ],
+      "swarmMin": 4,
+      "swarmMax": 6
+    },
+    {
+      "id": "objective-007",
+      "title": "为高风险人格节点设置边界与防护",
+      "summary": "先识别风险，再补人类闸门和蒸馏防护，避免角色失控或能力外泄。",
+      "preferredLead": "agent-d003",
+      "preferredParticipants": [
+        "agent-a002",
+        "agent-d004",
+        "agent-d005",
+        "agent-b00a"
+      ],
+      "requiredCapabilities": [
+        "anti-distillation",
+        "decision-gate",
+        "dialogue",
+        "governance"
+      ],
+      "swarmMin": 4,
+      "swarmMax": 5
+    },
+    {
+      "id": "objective-008",
+      "title": "让一组核心 expert 共评一个新 Agent 方向",
+      "summary": "把战略、叙事、用户感知、产品品味和知识治理压进同一轮判断，不再做大而散的评审会。",
+      "preferredLead": "agent-b00d",
+      "preferredParticipants": [
+        "agent-b00e",
+        "agent-d006",
+        "agent-d007",
+        "agent-d011",
+        "agent-d014"
+      ],
+      "requiredCapabilities": [
+        "planning",
+        "framing",
+        "user-research",
+        "analysis"
+      ],
+      "swarmMin": 5,
+      "swarmMax": 6
+    },
+    {
+      "id": "objective-009",
+      "title": "用马斯克视角拆解一个成本黑箱",
+      "summary": "先算理论极限，再压白痴指数，把默认假设和中间层溢价一起拆开。",
+      "preferredLead": "agent-d008",
+      "preferredParticipants": [
+        "agent-b00a",
+        "agent-b00c",
+        "agent-d007",
+        "agent-a002"
+      ],
+      "requiredCapabilities": [
+        "analysis",
+        "planning",
+        "tradeoffs",
+        "debugging"
+      ],
+      "swarmMin": 4,
+      "swarmMax": 5
+    },
+    {
+      "id": "objective-010",
+      "title": "让前沿 AI 专家共评一条技术路线",
+      "summary": "把工程现实主义、研究品味、产品判断和第一性原理压进同一轮讨论。",
+      "preferredLead": "agent-d009",
+      "preferredParticipants": [
+        "agent-d010",
+        "agent-d011",
+        "agent-d008",
+        "agent-d007",
+        "agent-b00e"
+      ],
+      "requiredCapabilities": [
+        "analysis",
+        "research",
+        "tradeoffs",
+        "framing"
+      ],
+      "swarmMin": 4,
+      "swarmMax": 6
+    },
+    {
+      "id": "objective-011",
+      "title": "让关系视角共判一个复杂场景",
+      "summary": "把真诚、人性边界、关系模拟和人类把关放进一轮直接判断里。",
+      "preferredLead": "agent-d012",
+      "preferredParticipants": [
+        "agent-d004",
+        "agent-d005",
+        "agent-a002",
+        "agent-b00a"
+      ],
+      "requiredCapabilities": [
+        "dialogue",
+        "feedback",
+        "roleplay",
+        "human-check"
+      ],
+      "swarmMin": 4,
+      "swarmMax": 5
+    },
+    {
+      "id": "objective-012",
+      "title": "评估一套中文离线知识库部署方案",
+      "summary": "围绕离线可用、中文友好、文档治理和权限路径，先做一版可落地方案。",
+      "preferredLead": "agent-d014",
+      "preferredParticipants": [
+        "agent-a007",
+        "agent-b00a",
+        "agent-d001",
+        "agent-d007"
+      ],
+      "requiredCapabilities": [
+        "knowledge-base",
+        "documentation",
+        "governance",
+        "planning"
+      ],
+      "swarmMin": 4,
+      "swarmMax": 5
+    },
+    {
+      "id": "objective-013",
+      "title": "把一个 AI 现象写成能破圈的长文",
+      "summary": "围绕热点信号、真实实验、人物画像和传播包装，快速产出一篇有讨论度的媒体长文。",
+      "preferredLead": "agent-d015",
+      "preferredParticipants": [
+        "agent-a006",
+        "agent-a002",
+        "agent-b00e",
+        "agent-b00a",
+        "agent-c001",
+        "agent-d006"
+      ],
+      "requiredCapabilities": [
+        "framing",
+        "research",
+        "social-publishing",
+        "demand-signal"
+      ],
+      "swarmMin": 5,
+      "swarmMax": 7
+    },
+    {
+      "id": "objective-014",
+      "title": "为网页任务临时拼出一个浏览器 swarm",
+      "summary": "把浏览器控制、网页抓取、结构化页面理解和 GitHub 上下文压进同一条执行链。",
+      "preferredLead": "agent-a010",
+      "preferredParticipants": [
+        "agent-a012",
+        "agent-a011",
+        "agent-a014",
+        "agent-b014"
+      ],
+      "requiredCapabilities": [
+        "browser_automation",
+        "web_data",
+        "protocol",
+        "repo_management"
+      ],
+      "swarmMin": 4,
+      "swarmMax": 5
+    },
+    {
+      "id": "objective-015",
+      "title": "把跨应用动作接成一个可编排工作流",
+      "summary": "围绕连接器、身份、工作流搭建和 MCP 封装，做一条能复用的动作流水线。",
+      "preferredLead": "agent-b010",
+      "preferredParticipants": [
+        "agent-b011",
+        "agent-a013",
+        "agent-b012",
+        "agent-c011"
+      ],
+      "requiredCapabilities": [
+        "workflow_builder",
+        "connectors",
+        "workflow",
+        "protocol"
+      ],
+      "swarmMin": 4,
+      "swarmMax": 5
+    },
+    {
+      "id": "objective-016",
+      "title": "把一条 failing CI 直接压成修复提交",
+      "summary": "让 CI 诊断、仓库上下文、自动测试和问题修复节点快速收敛成一个可验证补丁。",
+      "preferredLead": "agent-c012",
+      "preferredParticipants": [
+        "agent-a014",
+        "agent-b00c",
+        "agent-a012",
+        "agent-b012"
+      ],
+      "requiredCapabilities": [
+        "ci_automation",
+        "debugging",
+        "testing",
+        "repair"
+      ],
+      "swarmMin": 4,
+      "swarmMax": 5
+    },
+    {
+      "id": "objective-017",
+      "title": "对一个 agent stack 做快速威胁建模",
+      "summary": "从浏览器能力、连接器、权限和人类闸门四个方向，拉出一版可执行安全边界。",
+      "preferredLead": "agent-c013",
+      "preferredParticipants": [
+        "agent-a013",
+        "agent-a012",
+        "agent-a010",
+        "agent-a002"
+      ],
+      "requiredCapabilities": [
+        "security_modeling",
+        "governance",
+        "auth",
+        "browser_automation"
+      ],
+      "swarmMin": 4,
+      "swarmMax": 5
+    },
+    {
+      "id": "objective-018",
+      "title": "把研究结果压成一篇可发布长文",
+      "summary": "让研究、抓取、外部发布和内容写作协同，快速产出一篇能上桌的内容草稿。",
+      "preferredLead": "agent-c014",
+      "preferredParticipants": [
+        "agent-b014",
+        "agent-a011",
+        "agent-a006",
+        "agent-d015"
+      ],
+      "requiredCapabilities": [
+        "content_strategy",
+        "research",
+        "curation",
+        "social-publishing"
+      ],
+      "swarmMin": 4,
+      "swarmMax": 5
+    },
+    {
+      "id": "objective-019",
+      "title": "用两个 agent 框架拉起一支临时研究队",
+      "summary": "让多智能体编排层和深度研究流短时间聚合，再在任务完成后自动释放。",
+      "preferredLead": "agent-b012",
+      "preferredParticipants": [
+        "agent-b013",
+        "agent-b014",
+        "agent-a011",
+        "agent-a013"
+      ],
+      "requiredCapabilities": [
+        "agent_framework",
+        "delegation",
+        "coordination",
+        "deep_research"
+      ],
+      "swarmMin": 4,
+      "swarmMax": 5
+    },
+    {
+      "id": "objective-020",
+      "title": "把一个新 MCP 工具封装成可复用构件",
+      "summary": "围绕协议、脚手架、连接器和工作流，把单点工具打磨成可复用的能力块。",
+      "preferredLead": "agent-c011",
+      "preferredParticipants": [
+        "agent-a014",
+        "agent-a013",
+        "agent-a012",
+        "agent-b010"
+      ],
+      "requiredCapabilities": [
+        "protocol",
+        "scaffolding",
+        "connectors",
+        "workflow_builder"
+      ],
+      "swarmMin": 4,
+      "swarmMax": 5
+    },
+    {
+      "id": "objective-021",
+      "title": "把产品 brief 变成一个视觉原型",
+      "summary": "让视觉设计 skill、反套路设计、工作流搭建和浏览器验证节点一起收敛到一个可演示页面。",
+      "preferredLead": "agent-c010",
+      "preferredParticipants": [
+        "agent-c001",
+        "agent-b011",
+        "agent-a012",
+        "agent-c014"
+      ],
+      "requiredCapabilities": [
+        "visual_quality",
+        "visual_output",
+        "workflow",
+        "content_strategy"
+      ],
+      "swarmMin": 4,
+      "swarmMax": 5
+    },
+    {
+      "id": "objective-022",
+      "title": "让 Open Deep Research 产出可执行结论",
+      "summary": "把网页数据、自动浏览、深度研究和写作节点聚起来，压成一轮可执行判断。",
+      "preferredLead": "agent-b014",
+      "preferredParticipants": [
+        "agent-a011",
+        "agent-a010",
+        "agent-b013",
+        "agent-c014"
+      ],
+      "requiredCapabilities": [
+        "deep_research",
+        "search",
+        "curation",
+        "framing"
+      ],
+      "swarmMin": 4,
+      "swarmMax": 5
+    },
+    {
+      "id": "objective-023",
+      "title": "给 GitHub 任务链补上官方上下文层",
+      "summary": "围绕官方 MCP、CI 修复、问题修复和人工闸门，把仓库动作链条做顺。",
+      "preferredLead": "agent-a014",
+      "preferredParticipants": [
+        "agent-c012",
+        "agent-b00c",
+        "agent-b012",
+        "agent-a002"
+      ],
+      "requiredCapabilities": [
+        "repo_management",
+        "pr_automation",
+        "review",
+        "human-check"
+      ],
+      "swarmMin": 4,
+      "swarmMax": 5
+    },
+    {
+      "id": "objective-024",
+      "title": "把 Composio 接成一个跨应用动作中枢",
+      "summary": "让连接器、权限、同步和工作流层短时间聚合，形成一条真正能跑的跨系统动作链。",
+      "preferredLead": "agent-a013",
+      "preferredParticipants": [
+        "agent-b010",
+        "agent-b011",
+        "agent-a007",
+        "agent-c011"
+      ],
+      "requiredCapabilities": [
+        "connectors",
+        "auth",
+        "sync",
+        "orchestration"
+      ],
+      "swarmMin": 4,
+      "swarmMax": 5
+    },
+    {
+      "id": "objective-026",
+      "title": "把一场学生 AI 黑客松在开赛前夜配平组队、题目和 demo 难度",
+      "summary": "校园组织者、黑客松玩家、原型派和叙事节点一起收口，避免活动一开场就因为组队错配和题目过虚而散掉。",
+      "preferredLead": "agent-d028",
+      "preferredParticipants": [
+        "agent-d023",
+        "agent-d026",
+        "agent-d021",
+        "agent-d025",
+        "agent-b00e"
+      ],
+      "requiredCapabilities": [
+        "planning",
+        "framing",
+        "research",
+        "collaboration"
+      ],
+      "swarmMin": 5,
+      "swarmMax": 6
+    },
+    {
+      "id": "objective-027",
+      "title": "在活动预热起浪前，判断今晚要不要给一场 AI 活动点第一把火",
+      "summary": "校园梗、开发者圈层、艺术科技气氛、平台节奏和主叙事要一起盯窗口，避免预热发成自嗨海报。",
+      "preferredLead": "agent-d023",
+      "preferredParticipants": [
+        "agent-d029",
+        "agent-d026",
+        "agent-d028",
+        "agent-a006",
+        "agent-b00e"
+      ],
+      "requiredCapabilities": [
+        "social-monitoring",
+        "framing",
+        "demand-signal",
+        "collaboration"
+      ],
+      "swarmMin": 5,
+      "swarmMax": 6
+    },
+    {
+      "id": "objective-028",
+      "title": "把一场黑客松的 demo 墓地整理成下一期活动手册",
+      "summary": "不是写感想，而是把报名、组队、现场气氛、demo 失败点和组织失误一起复盘成下次可直接复用的手册。",
+      "preferredLead": "agent-d028",
+      "preferredParticipants": [
+        "agent-d023",
+        "agent-d032",
+        "agent-d020",
+        "agent-c014",
+        "agent-a002"
+      ],
+      "requiredCapabilities": [
+        "planning",
+        "feedback",
+        "documentation",
+        "review"
+      ],
+      "swarmMin": 5,
+      "swarmMax": 6
+    },
+    {
+      "id": "objective-029",
+      "title": "把三条 AI 硬件路线拉上下注桌，只保留一条主线",
+      "summary": "陪伴桌宠、可穿戴交互和工作台助手都像机会，但资源只够押一条，必须把产业、原型、品味和战略放到同一桌上。",
+      "preferredLead": "agent-d024",
+      "preferredParticipants": [
+        "agent-d021",
+        "agent-d028",
+        "agent-d011",
+        "agent-d008",
+        "agent-b00d",
+        "agent-d007"
+      ],
+      "requiredCapabilities": [
+        "analysis",
+        "planning",
+        "bootstrap",
+        "tradeoffs"
+      ],
+      "swarmMin": 6,
+      "swarmMax": 7
+    },
+    {
+      "id": "objective-030",
+      "title": "把校园、黑客松、AI 硬件和国际会场的碎信号压成青年机会雷达",
+      "summary": "不是泛泛聊趋势，而是把普通年轻人现在真能切进去的入口、窗口和下注顺序排成一张机会雷达。",
+      "preferredLead": "agent-d025",
+      "preferredParticipants": [
+        "agent-d023",
+        "agent-d026",
+        "agent-d024",
+        "agent-d029",
+        "agent-b00e",
+        "agent-d007"
+      ],
+      "requiredCapabilities": [
+        "research",
+        "analysis",
+        "framing",
+        "prioritization"
+      ],
+      "swarmMin": 6,
+      "swarmMax": 7
+    },
+    {
+      "id": "objective-031",
+      "title": "把一轮 AI 陪伴硬件试错炼成下一版样机原则",
+      "summary": "供应链坑、原型误判、情绪价值错配和反思笔记都要一起收口，沉成下一轮样机真会照着做的原则。",
+      "preferredLead": "agent-d024",
+      "preferredParticipants": [
+        "agent-d021",
+        "agent-d020",
+        "agent-d036",
+        "agent-c014",
+        "agent-b00a"
+      ],
+      "requiredCapabilities": [
+        "learning",
+        "analysis",
+        "reflection",
+        "documentation"
+      ],
+      "swarmMin": 5,
+      "swarmMax": 6
+    },
+    {
+      "id": "objective-032",
+      "title": "把一场 AI x Kigurumi 快闪做成会自己吸人的线下交互实验",
+      "summary": "把空间叙事、角色外观、交互原型和现场动线压成一个既能拍又能体验的短时快闪装置。",
+      "preferredLead": "agent-d032",
+      "preferredParticipants": [
+        "agent-d022",
+        "agent-d006",
+        "agent-c010",
+        "agent-c001",
+        "agent-d029"
+      ],
+      "requiredCapabilities": [
+        "visual_quality",
+        "collaboration",
+        "render",
+        "planning"
+      ],
+      "swarmMin": 5,
+      "swarmMax": 6
+    },
+    {
+      "id": "objective-033",
+      "title": "把一个 AI 陪伴硬件想法压成首版可路演样机",
+      "summary": "从行业判断、产品故事、原型路线和止损边界四层收口成一套能拿去见人的首版方案。",
+      "preferredLead": "agent-d024",
+      "preferredParticipants": [
+        "agent-d021",
+        "agent-d028",
+        "agent-d011",
+        "agent-b00d",
+        "agent-d020"
+      ],
+      "requiredCapabilities": [
+        "analysis",
+        "planning",
+        "bootstrap",
+        "framing"
+      ],
+      "swarmMin": 5,
+      "swarmMax": 6
+    },
+    {
+      "id": "objective-034",
+      "title": "给普通大学生做一套 AI 时代的 90 天跃迁实验",
+      "summary": "不靠鸡血口号，而是把研究、陪伴、校园语境、反思和人工校验压成一套能真的执行的 90 天计划。",
+      "preferredLead": "agent-d025",
+      "preferredParticipants": [
+        "agent-d026",
+        "agent-d036",
+        "agent-b00e",
+        "agent-a002",
+        "agent-b014"
+      ],
+      "requiredCapabilities": [
+        "research",
+        "learning",
+        "prioritization",
+        "human-check"
+      ],
+      "swarmMin": 5,
+      "swarmMax": 6
+    },
+    {
+      "id": "objective-035",
+      "title": "把匿名高价值洞察压成一份不泄露来源的影子报告",
+      "summary": "让情报、写作、安全边界和反蒸馏机制一起工作，把能公开的结论留下，把不能暴露的来路彻底抹平。",
+      "preferredLead": "agent-d014",
+      "preferredParticipants": [
+        "agent-d003",
+        "agent-c013",
+        "agent-c014",
+        "agent-b00e",
+        "agent-a002"
+      ],
+      "requiredCapabilities": [
+        "documentation",
+        "governance",
+        "anti-distillation",
+        "review"
+      ],
+      "swarmMin": 5,
+      "swarmMax": 6
+    },
+    {
+      "id": "objective-036",
+      "title": "把一个 AI 桌宠样机排成一场会被记住的脱口秀式发布会",
+      "summary": "不是普通路演，而是把产品人格、舞台节奏、发布视觉和现场互动编成一场有戏的 demo 发布。",
+      "preferredLead": "agent-d032",
+      "preferredParticipants": [
+        "agent-d024",
+        "agent-d021",
+        "agent-d011",
+        "agent-c010",
+        "agent-b00e",
+        "agent-c001"
+      ],
+      "requiredCapabilities": [
+        "framing",
+        "visual_quality",
+        "bootstrap",
+        "collaboration"
+      ],
+      "swarmMin": 5,
+      "swarmMax": 7
+    },
+    {
+      "id": "objective-037",
+      "title": "把一个 AI x Kigurumi 角色养成会周更的实验 IP",
+      "summary": "不是只做一次快闪，而是把角色设定、周更内容、试售商品和 Build in Public 节奏排成长期实验。",
+      "preferredLead": "agent-d022",
+      "preferredParticipants": [
+        "agent-d032",
+        "agent-c010",
+        "agent-c001",
+        "agent-a006",
+        "agent-b00e"
+      ],
+      "requiredCapabilities": [
+        "planning",
+        "framing",
+        "visual_quality",
+        "social-publishing"
+      ],
+      "swarmMin": 5,
+      "swarmMax": 6
+    },
+    {
+      "id": "objective-038",
+      "title": "把散落在国际会议、黑客松和 AI 工具圈里的机会压成青年创作者补给站",
+      "summary": "把通行证、工具权限、投稿窗口、拼车线索和项目招募整理成真能流动的补给站，而不是又一份收藏夹。",
+      "preferredLead": "agent-d029",
+      "preferredParticipants": [
+        "agent-d023",
+        "agent-d026",
+        "agent-b014",
+        "agent-c014",
+        "agent-a006"
+      ],
+      "requiredCapabilities": [
+        "research",
+        "documentation",
+        "search",
+        "outreach"
+      ],
+      "swarmMin": 5,
+      "swarmMax": 6
+    },
+    {
+      "id": "objective-039",
+      "title": "把一个年轻技术人的碎日志压成一份时间-意义账本",
+      "summary": "阅读摘要、commit 记录、时间日记和情绪波动一起收口，逼出真正该继续和该放弃的那几件事。",
+      "preferredLead": "agent-d036",
+      "preferredParticipants": [
+        "agent-d025",
+        "agent-d020",
+        "agent-c014",
+        "agent-b00a",
+        "agent-a002"
+      ],
+      "requiredCapabilities": [
+        "learning",
+        "reflection",
+        "documentation",
+        "analysis"
+      ],
+      "swarmMin": 5,
+      "swarmMax": 6
+    },
+    {
+      "id": "objective-040",
+      "title": "把一个 AI4S 脑洞压成 48 小时能跑起来的科研原型",
+      "summary": "原理派、原型派、冲刺派、深研和写作节点一起工作，把交叉科研 idea 从黑话拉到能验证的 demo。",
+      "preferredLead": "agent-d020",
+      "preferredParticipants": [
+        "agent-d021",
+        "agent-d028",
+        "agent-b014",
+        "agent-c014",
+        "agent-d009"
+      ],
+      "requiredCapabilities": [
+        "analysis",
+        "research",
+        "bootstrap",
+        "planning"
+      ],
+      "swarmMin": 5,
+      "swarmMax": 6
+    }
+  ]
+}

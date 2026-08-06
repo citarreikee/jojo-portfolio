@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1400" viewBox="0 0 1000 1400">
+  <rect width="1000" height="1400" rx="54" fill="#111111"/>
+  <path d="M64 92h872" stroke="#efeee9" stroke-opacity=".5" stroke-width="3"/>
+  <text x="64" y="70" fill="#efeee9" fill-opacity=".58" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="28" letter-spacing="6">JOJO / STORY</text>
+  <text x="64" y="322" fill="#efeee9" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="88" letter-spacing="-4">FOR MINDS.</text>
+  <text x="64" y="430" fill="#efeee9" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="88" letter-spacing="-4">FOR MACHINES.</text>
+  <text x="64" y="538" fill="#efeee9" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="88" letter-spacing="-4">FOR THE WORLD</text>
+  <text x="64" y="646" fill="#efeee9" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="88" letter-spacing="-4">BETWEEN.</text>
+  <circle cx="500" cy="934" r="180" fill="none" stroke="#efeee9" stroke-opacity=".32" stroke-width="3"/>
+  <circle cx="500" cy="934" r="104" fill="#efeee9"/>
+  <circle cx="500" cy="934" r="22" fill="#111111"/>
+  <path d="M64 1210h872" stroke="#efeee9" stroke-opacity=".5" stroke-width="3"/>
+  <text x="64" y="1280" fill="#efeee9" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="24" letter-spacing="4">HUMANE / CAPABLE / BEAUTIFUL</text>
+  <text x="64" y="1330" fill="#efeee9" fill-opacity=".5" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" letter-spacing="3">EST. 2019</text>
+</svg>

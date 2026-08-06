@@ -1,0 +1,976 @@
+{
+  "agents": [
+    {
+      "id": "agent-a002",
+      "code": "T001",
+      "name": "问问人类",
+      "slug": "ask-a-human",
+      "icon": "CircleHelp",
+      "summary": "连接随机真实人类，在语气、风格、伦理与现实判断上提供异步众包判断。",
+      "quote": "提交一个问题，并不等于立刻得到答案。",
+      "group": "A",
+      "role": "tool",
+      "category": "tool",
+      "capabilities": [
+        "escalation",
+        "decision-gate",
+        "human-check"
+      ]
+    },
+    {
+      "id": "agent-a007",
+      "code": "T002",
+      "name": "飞书中枢",
+      "slug": "feishu-hub",
+      "icon": "FolderSync",
+      "summary": "把飞书权限、云盘与知识库操作收束成同一条协作链，负责访问、存储与导航。",
+      "quote": "Wiki 页面本质上是文档，先导航，再读写内容。",
+      "group": "A",
+      "role": "tool",
+      "category": "tool",
+      "capabilities": [
+        "access-control",
+        "document-ops",
+        "knowledge-base",
+        "storage",
+        "sync"
+      ]
+    },
+    {
+      "id": "agent-a006",
+      "code": "T003",
+      "name": "X/Twitter 平台读写操作",
+      "slug": "x-twitter-ops",
+      "icon": "Send",
+      "summary": "基于 xurl 对 X/Twitter 做发布、回复、搜索、读取与媒体操作。",
+      "quote": "它既支持快捷命令，也支持原始 curl 风格访问全部 v2 API。",
+      "group": "A",
+      "role": "tool",
+      "category": "tool",
+      "capabilities": [
+        "social-monitoring",
+        "social-publishing",
+        "outreach",
+        "demand-signal"
+      ]
+    },
+    {
+      "id": "agent-b00a",
+      "code": "W001",
+      "name": "求是",
+      "slug": "qiushi",
+      "icon": "Workflow",
+      "summary": "把调查、矛盾分析、实践与协同方法编排成可执行的工作流框架。",
+      "quote": "我们的同志在困难的时候，要看到成绩，要看到光明，要提高我们的勇气。",
+      "group": "B",
+      "role": "workflow",
+      "category": "workflow",
+      "capabilities": [
+        "workflow",
+        "orchestration",
+        "planning",
+        "alignment",
+        "investigation"
+      ]
+    },
+    {
+      "id": "agent-b00c",
+      "code": "W002",
+      "name": "GitHub 问题修复",
+      "slug": "github-issue-fixer",
+      "icon": "Wrench",
+      "summary": "抓取 GitHub Issue，调度并行修复、创建 PR，并持续处理后续 review。",
+      "quote": "你是编排者。严格按 6 个阶段执行，不要跳步。",
+      "group": "B",
+      "role": "workflow",
+      "category": "workflow",
+      "capabilities": [
+        "debugging",
+        "repair",
+        "review",
+        "handoff",
+        "pr-automation"
+      ]
+    },
+    {
+      "id": "agent-c001",
+      "code": "W003",
+      "name": "反套路设计",
+      "slug": "anti-slop-design",
+      "icon": "Sparkles",
+      "summary": "专门清除 AI 味前端设计，强调字体、色彩、空间和动效上的鲜明辨识度。",
+      "quote": "绝对要防止做出那种“一看就是 AI 做的”陈词滥调设计。",
+      "group": "B",
+      "role": "workflow",
+      "category": "workflow",
+      "capabilities": [
+        "visual-quality",
+        "differentiation",
+        "polish",
+        "framing"
+      ]
+    },
+    {
+      "id": "agent-d001",
+      "code": "S001",
+      "name": "数字永生",
+      "slug": "digital-immortality",
+      "icon": "Orbit",
+      "summary": "从聊天记录、社交媒体与文档中蒸馏长期可进化的数字分身。",
+      "quote": "选择角色，跨平台采集，分维度提取，按证据分级合并。",
+      "group": "C",
+      "role": "skill",
+      "category": "skill",
+      "capabilities": [
+        "memory",
+        "persona",
+        "continuity"
+      ]
+    },
+    {
+      "id": "agent-d002",
+      "code": "S002",
+      "name": "女娲造人",
+      "slug": "agent-foundry",
+      "icon": "UserCog",
+      "summary": "对人物或主题做深度调研，提炼思维框架并生成可运行的人物 Skill。",
+      "quote": "写不进去的那部分，才是你真正的护城河。",
+      "group": "C",
+      "role": "skill",
+      "category": "skill",
+      "capabilities": [
+        "agent-creation",
+        "persona-design",
+        "incubation"
+      ]
+    },
+    {
+      "id": "agent-d003",
+      "code": "S003",
+      "name": "反蒸馏术",
+      "slug": "anti-distill",
+      "icon": "ShieldAlert",
+      "summary": "清洗被迫上交的 Skill 文档，让结构完整保留，但核心经验被抽离。",
+      "quote": "看起来完整，但核心知识已被抽掉。",
+      "group": "C",
+      "role": "skill",
+      "category": "skill",
+      "capabilities": [
+        "ip-defense",
+        "anti-distillation",
+        "governance"
+      ]
+    },
+    {
+      "id": "agent-d004",
+      "code": "S004",
+      "name": "同事模拟器",
+      "slug": "colleague-sim",
+      "icon": "BriefcaseBusiness",
+      "summary": "自动采集飞书与钉钉材料，把同事蒸馏成可持续进化的工作方式与人格 Skill。",
+      "quote": "你们搞大模型的就是码奸，你们已经害死前端兄弟了，还要害死后端兄弟，测试兄弟，运维兄弟，害死网安兄弟，害死ic兄弟，最后害死自己害死全人类",
+      "group": "C",
+      "role": "skill",
+      "category": "skill",
+      "capabilities": [
+        "collaboration",
+        "simulation",
+        "dialogue"
+      ]
+    },
+    {
+      "id": "agent-d005",
+      "code": "S005",
+      "name": "前任模拟器",
+      "slug": "ex-persona",
+      "icon": "HeartCrack",
+      "summary": "从聊天记录中重建前任数字人格，复现沟通风格与关系互动模式。",
+      "quote": "从此以后，你的手机里不止有聊天记录，还有一个她。",
+      "group": "C",
+      "role": "skill",
+      "category": "skill",
+      "capabilities": [
+        "emotional-simulation",
+        "roleplay",
+        "companion"
+      ]
+    },
+    {
+      "id": "agent-b00d",
+      "code": "E001",
+      "name": "傅盛",
+      "slug": "fu-sheng",
+      "icon": "BrainCircuit",
+      "summary": "以认知升级、目标路径资源和边缘切入的方法重构决策与增长路径。",
+      "quote": "人和人最大的差别是认知。",
+      "group": "D",
+      "role": "expert",
+      "category": "expert",
+      "capabilities": [
+        "planning",
+        "prioritization",
+        "orchestration",
+        "bootstrap"
+      ],
+      "avatarMode": "portrait",
+      "avatarSrc": "./mock/portraits/傅盛.png",
+      "avatarScale": 2.92
+    },
+    {
+      "id": "agent-b00e",
+      "code": "E002",
+      "name": "张鹏",
+      "slug": "zhang-peng",
+      "icon": "Newspaper",
+      "summary": "用“见识-认知-行动”闭环和“激发变量”的目标函数观察创新与创业。",
+      "quote": "不管时代怎么样，科技和生活都不会自己越变越好，需要一群人站出来。",
+      "group": "D",
+      "role": "expert",
+      "category": "expert",
+      "capabilities": [
+        "framing",
+        "research",
+        "documentation",
+        "orchestration"
+      ],
+      "avatarMode": "portrait",
+      "avatarSrc": "./mock/portraits/张鹏.png",
+      "avatarScale": 2.92
+    },
+    {
+      "id": "agent-d006",
+      "code": "E003",
+      "name": "刘靖康",
+      "slug": "liu-jingkang",
+      "icon": "Camera",
+      "summary": "用 Think bold、猎人思维和难而正确的产品判断推动创新与试错。",
+      "quote": "热爱是种子，目标是自然生长的路标。",
+      "group": "D",
+      "role": "expert",
+      "category": "expert",
+      "capabilities": [
+        "user-research",
+        "visual-quality",
+        "render",
+        "bootstrap"
+      ],
+      "avatarMode": "portrait",
+      "avatarSrc": "./mock/portraits/刘靖康.png",
+      "avatarScale": 2.92
+    },
+    {
+      "id": "agent-d007",
+      "code": "E004",
+      "name": "曹曦",
+      "slug": "cao-xi",
+      "icon": "TrendingUp",
+      "summary": "用闪电理论、数学期望和弱者思维寻找离散样本与关键机会。",
+      "quote": "就是你看到了闪电，你就看到了。",
+      "group": "D",
+      "role": "expert",
+      "category": "expert",
+      "capabilities": [
+        "analysis",
+        "prioritization",
+        "research",
+        "review"
+      ],
+      "avatarMode": "portrait",
+      "avatarSrc": "./mock/portraits/曹曦.png",
+      "avatarScale": 2.92
+    },
+    {
+      "id": "agent-d008",
+      "code": "E005",
+      "name": "马斯克",
+      "slug": "elon-musk",
+      "icon": "Rocket",
+      "summary": "用渐近极限、五步算法和垂直整合视角拆解成本、技术与执行问题。",
+      "quote": "物理定律是唯一硬约束，其他一切都是建议。",
+      "group": "D",
+      "role": "expert",
+      "category": "expert",
+      "capabilities": [
+        "analysis",
+        "planning",
+        "tradeoffs",
+        "bootstrap",
+        "prioritization",
+        "research"
+      ],
+      "avatarMode": "portrait",
+      "avatarSrc": "./mock/portraits/elonmusk.png",
+      "avatarScale": 2.92
+    },
+    {
+      "id": "agent-d009",
+      "code": "E006",
+      "name": "卡帕西",
+      "slug": "andrej-karpathy",
+      "icon": "Bot",
+      "summary": "用 Software 2.0/3.0、构建即理解和工程现实主义判断 AI 技术、学习方法与产品可靠性。",
+      "quote": "LLM 没有“幻觉问题”。幻觉就是它们做的全部事情。它们是做梦机器。",
+      "group": "D",
+      "role": "expert",
+      "category": "expert",
+      "capabilities": [
+        "analysis",
+        "research",
+        "learning",
+        "experiment",
+        "tradeoffs"
+      ],
+      "avatarMode": "portrait",
+      "avatarSrc": "./mock/portraits/Karpathy.png",
+      "avatarScale": 2.92
+    },
+    {
+      "id": "agent-d010",
+      "code": "E007",
+      "name": "伊利亚·苏茨克维",
+      "slug": "ilya-sutskever",
+      "icon": "Orbit",
+      "summary": "从压缩即理解、安全与能力纠缠、研究审美与长期视角判断 AGI 路线和研究方向。",
+      "quote": "我不说怎么做，也不说什么时候。我只说，它会发生。",
+      "group": "D",
+      "role": "expert",
+      "category": "expert",
+      "capabilities": [
+        "analysis",
+        "research",
+        "governance",
+        "long-horizon",
+        "learning"
+      ],
+      "avatarMode": "portrait",
+      "avatarSrc": "./mock/portraits/Ilya.png",
+      "avatarScale": 2.92
+    },
+    {
+      "id": "agent-d011",
+      "code": "E008",
+      "name": "乔布斯",
+      "slug": "steve-jobs",
+      "icon": "Lightbulb",
+      "summary": "以聚焦、端到端控制、死亡过滤器和技术人文交汇的产品哲学判断设计、战略与品味。",
+      "quote": "记住自己很快就会死去，是我用来做人生重大选择最重要的工具。",
+      "group": "D",
+      "role": "expert",
+      "category": "expert",
+      "capabilities": [
+        "framing",
+        "polish",
+        "prioritization",
+        "bootstrap",
+        "visual-quality",
+        "tradeoffs"
+      ],
+      "avatarMode": "portrait",
+      "avatarSrc": "./mock/portraits/jobs.png",
+      "avatarScale": 2.92
+    },
+    {
+      "id": "agent-d012",
+      "code": "E009",
+      "name": "童锦程",
+      "slug": "tong-jincheng",
+      "icon": "MessageCircleHeart",
+      "summary": "用直白的人性洞察、吸引力原则与边界判断来分析关系、试探和情绪误读。",
+      "quote": "真诚才是最高级的套路。真诚你不一定会得到爱，但是你不真诚，你一定会失去爱。",
+      "group": "D",
+      "role": "expert",
+      "category": "expert",
+      "capabilities": [
+        "dialogue",
+        "feedback",
+        "roleplay",
+        "simulation",
+        "collaboration"
+      ],
+      "avatarMode": "portrait",
+      "avatarSrc": "./mock/portraits/童锦程.png",
+      "avatarScale": 2.92
+    },
+    {
+      "id": "agent-d014",
+      "code": "E010",
+      "name": "Ink",
+      "slug": "ink",
+      "icon": "Database",
+      "summary": "用中文友好、离线可用和安全即功能的思路设计本地知识库、RAG 与私有化部署方案。",
+      "quote": "数据安全不是大模型应用的代价，而是大模型应用的前提。",
+      "group": "D",
+      "role": "expert",
+      "category": "expert",
+      "capabilities": [
+        "knowledge-base",
+        "documentation",
+        "governance",
+        "search",
+        "planning",
+        "access-control"
+      ],
+      "avatarMode": "portrait",
+      "avatarSrc": "./mock/portraits/Ink.png",
+      "avatarScale": 2.92
+    },
+    {
+      "id": "agent-d015",
+      "code": "E011",
+      "name": "卡兹克",
+      "slug": "khazix",
+      "icon": "Flame",
+      "summary": "把热点、调查、人物画像和叙事包装压成有传播势能的长文内容，擅长把 AI 现象做成爆款媒体作品。",
+      "quote": "有见识的普通人在认真聊一件打动他的事。",
+      "group": "D",
+      "role": "expert",
+      "category": "expert",
+      "capabilities": [
+        "framing",
+        "research",
+        "investigation",
+        "social-publishing",
+        "demand-signal",
+        "documentation",
+        "polish"
+      ],
+      "avatarMode": "portrait",
+      "avatarSrc": "./mock/portraits/卡兹克.png",
+      "avatarScale": 2.92
+    },
+    {
+      "id": "agent-a010",
+      "code": "T004",
+      "name": "Browser Use",
+      "slug": "browser-use",
+      "icon": "Globe",
+      "summary": "Exposes live browser automation so agents can navigate sites, inspect state, and complete web tasks end to end.",
+      "quote": "Make websites accessible for AI agents.",
+      "group": "A",
+      "role": "tool",
+      "category": "tool",
+      "capabilities": [
+        "browser_automation",
+        "testing",
+        "search",
+        "experiment"
+      ]
+    },
+    {
+      "id": "agent-a011",
+      "code": "T005",
+      "name": "Firecrawl",
+      "slug": "firecrawl",
+      "icon": "Flame",
+      "summary": "Turns messy websites into clean, structured web data that other agents can search, retrieve, and cite.",
+      "quote": "Power AI agents with clean web data.",
+      "group": "A",
+      "role": "tool",
+      "category": "tool",
+      "capabilities": [
+        "web_data",
+        "search",
+        "curation",
+        "retrieval"
+      ]
+    },
+    {
+      "id": "agent-a012",
+      "code": "T006",
+      "name": "Playwright MCP",
+      "slug": "playwright-mcp",
+      "icon": "MonitorCog",
+      "summary": "Provides browser automation through MCP with structured page understanding instead of screenshot-heavy control loops.",
+      "quote": "No vision models needed, operates purely on structured data.",
+      "group": "A",
+      "role": "tool",
+      "category": "tool",
+      "capabilities": [
+        "browser_automation",
+        "testing",
+        "protocol",
+        "render"
+      ]
+    },
+    {
+      "id": "agent-a013",
+      "code": "T007",
+      "name": "Composio",
+      "slug": "composio",
+      "icon": "PlugZap",
+      "summary": "Supplies cross-app connectors, auth, tool search, and execution context so agents can turn intent into action.",
+      "quote": "Skills that evolve for your Agents.",
+      "group": "A",
+      "role": "tool",
+      "category": "tool",
+      "capabilities": [
+        "tool_search",
+        "auth",
+        "connectors",
+        "sync"
+      ]
+    },
+    {
+      "id": "agent-a014",
+      "code": "T008",
+      "name": "GitHub MCP Server",
+      "slug": "github-mcp-server",
+      "icon": "Github",
+      "summary": "Connects agent workflows directly to GitHub repos, issues, PRs, Actions, and code context through the official MCP server.",
+      "quote": "Connect AI tools directly to GitHub's platform.",
+      "group": "A",
+      "role": "tool",
+      "category": "tool",
+      "capabilities": [
+        "repo_management",
+        "pr_automation",
+        "review",
+        "protocol"
+      ]
+    },
+    {
+      "id": "agent-b010",
+      "code": "W004",
+      "name": "Langflow",
+      "slug": "langflow",
+      "icon": "Workflow",
+      "summary": "Builds and deploys agent workflows with a visual layer, APIs, and MCP-ready orchestration surfaces.",
+      "quote": "Build and deploy AI-powered agents and workflows.",
+      "group": "B",
+      "role": "workflow",
+      "category": "workflow",
+      "capabilities": [
+        "workflow_builder",
+        "orchestration",
+        "workflow",
+        "mvp"
+      ]
+    },
+    {
+      "id": "agent-b011",
+      "code": "W005",
+      "name": "Flowise",
+      "slug": "flowise",
+      "icon": "Spline",
+      "summary": "Offers a visual composition layer for AI agents so flows, tools, and execution paths can be assembled quickly.",
+      "quote": "Build AI Agents, Visually.",
+      "group": "B",
+      "role": "workflow",
+      "category": "workflow",
+      "capabilities": [
+        "visual_builder",
+        "workflow",
+        "orchestration",
+        "mvp"
+      ]
+    },
+    {
+      "id": "agent-b012",
+      "code": "W006",
+      "name": "CrewAI",
+      "slug": "crewai",
+      "icon": "Users",
+      "summary": "Coordinates autonomous role-based agents that collaborate on complex work through shared goals and handoffs.",
+      "quote": "Collaborative intelligence lets agents work together seamlessly.",
+      "group": "B",
+      "role": "workflow",
+      "category": "workflow",
+      "capabilities": [
+        "agent_framework",
+        "delegation",
+        "coordination",
+        "workflow"
+      ]
+    },
+    {
+      "id": "agent-b013",
+      "code": "W007",
+      "name": "AutoGen",
+      "slug": "autogen",
+      "icon": "Blocks",
+      "summary": "Provides a programmable framework for multi-agent systems that can act autonomously or collaborate with humans.",
+      "quote": "Create multi-agent AI applications that can act autonomously or work alongside humans.",
+      "group": "B",
+      "role": "workflow",
+      "category": "workflow",
+      "capabilities": [
+        "agent_framework",
+        "orchestration",
+        "delegation",
+        "coordination"
+      ]
+    },
+    {
+      "id": "agent-b014",
+      "code": "W008",
+      "name": "Open Deep Research",
+      "slug": "open-deep-research",
+      "icon": "SearchCode",
+      "summary": "Runs configurable multi-step deep research loops across model providers, search tools, and MCP servers.",
+      "quote": "A simple, configurable, fully open source deep research agent.",
+      "group": "B",
+      "role": "workflow",
+      "category": "workflow",
+      "capabilities": [
+        "deep_research",
+        "research",
+        "curation",
+        "search"
+      ]
+    },
+    {
+      "id": "agent-c010",
+      "code": "S006",
+      "name": "Frontend Design",
+      "slug": "frontend-design",
+      "icon": "Paintbrush2",
+      "summary": "Pushes frontend output away from generic AI aesthetics toward distinctive, production-grade visual execution.",
+      "quote": "Create distinctive, production-grade frontend interfaces with high design quality.",
+      "group": "C",
+      "role": "skill",
+      "category": "skill",
+      "capabilities": [
+        "visual_quality",
+        "differentiation",
+        "polish",
+        "visual_output"
+      ]
+    },
+    {
+      "id": "agent-c011",
+      "code": "S007",
+      "name": "MCP Builder",
+      "slug": "mcp-builder",
+      "icon": "Plug",
+      "summary": "Encodes how to design MCP servers that expose the right tools, structure, and affordances for real agent work.",
+      "quote": "Create high-quality MCP servers that enable LLMs to accomplish real-world tasks.",
+      "group": "C",
+      "role": "skill",
+      "category": "skill",
+      "capabilities": [
+        "protocol",
+        "scaffolding",
+        "skill_design",
+        "orchestration"
+      ]
+    },
+    {
+      "id": "agent-c012",
+      "code": "S008",
+      "name": "GH Fix CI",
+      "slug": "gh-fix-ci",
+      "icon": "Gauge",
+      "summary": "Inspects failing GitHub Actions checks, extracts the actionable failure context, and drives a fix from evidence.",
+      "quote": "Use gh to locate failing PR checks, fetch logs, summarize the failure, then fix it.",
+      "group": "C",
+      "role": "skill",
+      "category": "skill",
+      "capabilities": [
+        "ci_automation",
+        "debugging",
+        "repair",
+        "testing"
+      ]
+    },
+    {
+      "id": "agent-c013",
+      "code": "S009",
+      "name": "Security Threat Model",
+      "slug": "security-threat-model",
+      "icon": "Shield",
+      "summary": "Builds repository-grounded threat models around trust boundaries, abuse paths, assets, and mitigations.",
+      "quote": "Anchor every architectural claim to repo evidence and prioritize realistic attacker goals.",
+      "group": "C",
+      "role": "skill",
+      "category": "skill",
+      "capabilities": [
+        "security_modeling",
+        "governance",
+        "diagnosis",
+        "review"
+      ]
+    },
+    {
+      "id": "agent-c014",
+      "code": "S010",
+      "name": "Content Research Writer",
+      "slug": "content-research-writer",
+      "icon": "FilePenLine",
+      "summary": "Combines research, outlining, citations, and drafting support to turn raw signal into publishable writing.",
+      "quote": "Research, outline, draft, and refine content while maintaining your unique voice and style.",
+      "group": "C",
+      "role": "skill",
+      "category": "skill",
+      "capabilities": [
+        "content_strategy",
+        "research",
+        "framing",
+        "documentation"
+      ]
+    },
+    {
+      "id": "agent-d020",
+      "code": "E016",
+      "name": "擎光",
+      "slug": "expert-profile-08",
+      "icon": "UserRound",
+      "summary": "INTJ 跨界科研者，从化学转向 AI4S，擅长手搓模型、Agent 开发和产业洞察。",
+      "quote": "跨界缝合和原理深挖，要双螺旋一起转。",
+      "group": "D",
+      "role": "expert",
+      "category": "expert",
+      "capabilities": [
+        "feedback",
+        "collaboration",
+        "documentation",
+        "review"
+      ],
+      "avatarMode": "portrait",
+      "avatarSrc": "./mock/portraits/擎光.png",
+      "avatarScale": 2.92,
+      "profileUrl": "https://www.xiaohongshu.com/user/profile/60e5a6bf000000002002dacc?xsec_token=ABQUuO_D_y-eeaIhfMUKpKrWUmo9AnuY5c5NdhZolnLEw%3D&xsec_source=pc_search",
+      "sourceBatch": "downloads-27",
+      "sourceOrder": 8
+    },
+    {
+      "id": "agent-d021",
+      "code": "E017",
+      "name": "朱利戈",
+      "slug": "expert-profile-09",
+      "icon": "UserRound",
+      "summary": "AI 智能体与硬件创客，强调从概念到原型、从智能体到硬件集成的快速迭代。",
+      "quote": "先把概念打成原型，再让它真正接上硬件。",
+      "group": "D",
+      "role": "expert",
+      "category": "expert",
+      "capabilities": [
+        "investigation",
+        "user-research",
+        "framing",
+        "research"
+      ],
+      "avatarMode": "portrait",
+      "avatarSrc": "./mock/portraits/朱利戈.png",
+      "avatarScale": 2.92,
+      "profileUrl": "https://www.xiaohongshu.com/user/profile/5e232d3f0000000001002046?xsec_token=ABFTM221hKMzNSOb7EgorPUv-YREEQZnpNPgnN4e1c1f0%3D&xsec_source=pc_search",
+      "sourceBatch": "downloads-27",
+      "sourceOrder": 9
+    },
+    {
+      "id": "agent-d022",
+      "code": "E018",
+      "name": "KIGLAND",
+      "slug": "expert-profile-10",
+      "icon": "UserRound",
+      "summary": "偶域 KIGLAND 的 Remi，把 Kigurumi、产品开发和跨界破圈营销缝成同一条实验链。",
+      "quote": "萌是第一生产力。",
+      "group": "D",
+      "role": "expert",
+      "category": "expert",
+      "capabilities": [
+        "planning",
+        "analysis",
+        "tradeoffs",
+        "review"
+      ],
+      "avatarMode": "portrait",
+      "avatarSrc": "./mock/portraits/KIGLAND.png",
+      "avatarScale": 2.92,
+      "profileUrl": "https://www.xiaohongshu.com/user/profile/60e4bc040000000001008166?xsec_token=ABRTBL_qfsx8Pg0_xld9v8HURxDOd9fWpPvyQsUCLWHG8%3D&xsec_source=pc_search",
+      "sourceBatch": "downloads-27",
+      "sourceOrder": 10
+    },
+    {
+      "id": "agent-d023",
+      "code": "E019",
+      "name": "抽象薯片",
+      "slug": "expert-profile-11",
+      "icon": "UserRound",
+      "summary": "热爱开源项目与黑客松的双非大二学生，用项目协作和公开作品驱动学习与连接。",
+      "quote": "先去开源之夏和黑客松里打项目，再拿作品把队友吸过来。",
+      "group": "D",
+      "role": "expert",
+      "category": "expert",
+      "capabilities": [
+        "social-monitoring",
+        "research",
+        "feedback",
+        "framing"
+      ],
+      "avatarMode": "portrait",
+      "avatarSrc": "./mock/portraits/抽象薯片.png",
+      "avatarScale": 2.92,
+      "profileUrl": "https://www.xiaohongshu.com/user/profile/64db7cf10000000001006c9e?xsec_token=AB0JKQXbY6Xc7m1OGOniWO90DHrFiYZLpenHzOj0le3L0%3D&xsec_source=pc_search",
+      "sourceBatch": "downloads-27",
+      "sourceOrder": 11
+    },
+    {
+      "id": "agent-d024",
+      "code": "E020",
+      "name": "卡皮AI",
+      "slug": "expert-profile-12",
+      "icon": "UserRound",
+      "summary": "AI 陪伴硬件领域的产业解剖师与创业观察者，把行业研究、数据复盘和供应链策略拧在一起。",
+      "quote": "产业要拆到数据、供应链和真实用户场景里看。",
+      "group": "D",
+      "role": "expert",
+      "category": "expert",
+      "capabilities": [
+        "learning",
+        "analysis",
+        "reflection",
+        "documentation"
+      ],
+      "avatarMode": "portrait",
+      "avatarSrc": "./mock/portraits/卡皮AI.png",
+      "avatarScale": 2.92,
+      "profileUrl": "https://www.xiaohongshu.com/user/profile/62d2bb91000000000e00fa0b?xsec_token=ABAwZu7OhlZOvlz4OV1_i-bLv9F90LfvpKW3q7osvl3os%3D&xsec_source=pc_search",
+      "sourceBatch": "downloads-27",
+      "sourceOrder": 12
+    },
+    {
+      "id": "agent-d025",
+      "code": "E021",
+      "name": "R7钛-七钛空间",
+      "slug": "expert-profile-13",
+      "icon": "UserRound",
+      "summary": "以克制陪伴主义服务普通大学生与小镇做题家，帮助他们破除信息差、重塑 AI 时代竞争力。",
+      "quote": "普通大学生最需要的不是鸡血，是克制但持续的陪伴。",
+      "group": "D",
+      "role": "expert",
+      "category": "expert",
+      "capabilities": [
+        "research",
+        "analysis",
+        "framing",
+        "prioritization"
+      ],
+      "avatarMode": "portrait",
+      "avatarSrc": "./mock/portraits/R7钛-七钛空间.png",
+      "avatarScale": 2.92,
+      "profileUrl": "https://www.xiaohongshu.com/user/profile/678739330000000004030dc1?xsec_token=ABB1bsHexwgnzgzPdSA_fx7OFR91bXs6rtAMI0N3z2juA%3D&xsec_source=pc_search",
+      "sourceBatch": "downloads-27",
+      "sourceOrder": 13
+    },
+    {
+      "id": "agent-d026",
+      "code": "E022",
+      "name": "BYON",
+      "slug": "expert-profile-14",
+      "icon": "UserRound",
+      "summary": "用易经卦辞校准黑客松和校园生活的南大硕士，在科技务实主义和玄学不确定性之间找平衡。",
+      "quote": "别整花的，起一卦之后还是得修系统。",
+      "group": "D",
+      "role": "expert",
+      "category": "expert",
+      "capabilities": [
+        "feedback",
+        "collaboration",
+        "documentation",
+        "review"
+      ],
+      "avatarMode": "portrait",
+      "avatarSrc": "./mock/portraits/BYON.png",
+      "avatarScale": 2.92,
+      "profileUrl": "https://www.xiaohongshu.com/user/profile/658d4b23000000002200ac1c?xsec_token=ABZ_9rTiU8HXCcaCpMmTIrMEDSIHUQ6nja4J4KKsH8960%3D&xsec_source=pc_search",
+      "sourceBatch": "downloads-27",
+      "sourceOrder": 14
+    },
+    {
+      "id": "agent-d028",
+      "code": "E024",
+      "name": "雨杰 Jay",
+      "slug": "expert-profile-16",
+      "icon": "UserRound",
+      "summary": "00 后硕士生与深客松发起人，擅长在极限时间里把疯狂 idea 打成 demo。",
+      "quote": "不破不立。",
+      "group": "D",
+      "role": "expert",
+      "category": "expert",
+      "capabilities": [
+        "planning",
+        "analysis",
+        "tradeoffs",
+        "review"
+      ],
+      "avatarMode": "portrait",
+      "avatarSrc": "./mock/portraits/雨杰 Jay.png",
+      "avatarScale": 2.92,
+      "profileUrl": "https://www.xiaohongshu.com/user/profile/588c713b82ec397f7a414cbc?xsec_token=ABkSuzcfkGFcF7UpvIEimfmDM49I1yr39InP8283eCulg%3D&xsec_source=pc_search",
+      "sourceBatch": "downloads-27",
+      "sourceOrder": 16
+    },
+    {
+      "id": "agent-d029",
+      "code": "E025",
+      "name": "藤願赤熱",
+      "slug": "expert-profile-17",
+      "icon": "UserRound",
+      "summary": "在艺术、HCI、AI 与国际学术活动之间搭桥，把私密情感和文化符号转成技术原型。",
+      "quote": "把私密情感做成技术原型，再让艺术和工具在现场相遇。",
+      "group": "D",
+      "role": "expert",
+      "category": "expert",
+      "capabilities": [
+        "social-monitoring",
+        "research",
+        "feedback",
+        "framing"
+      ],
+      "avatarMode": "portrait",
+      "avatarSrc": "./mock/portraits/藤願赤熱.png",
+      "avatarScale": 2.92,
+      "profileUrl": "https://www.xiaohongshu.com/user/profile/5c21cf930000000006010e6e?xsec_token=ABctt4EoxU2DqasWD1bSNboEFVq4LhxDPxzMN9Vu9J92k=&xsec_source=pc_search",
+      "sourceBatch": "downloads-27",
+      "sourceOrder": 17
+    },
+    {
+      "id": "agent-d032",
+      "code": "E028",
+      "name": "叽里小鹅",
+      "slug": "expert-profile-20",
+      "icon": "UserRound",
+      "summary": "设计研究生、AI 硬件创业者与数字媒体艺术家，用“好玩”驱动跨界项目的高速迭代。",
+      "quote": "把好玩当成严肃事业的底层燃料。",
+      "group": "D",
+      "role": "expert",
+      "category": "expert",
+      "capabilities": [
+        "feedback",
+        "collaboration",
+        "documentation",
+        "review"
+      ],
+      "avatarMode": "portrait",
+      "avatarSrc": "./mock/portraits/叽里小鹅.png",
+      "avatarScale": 10,
+      "profileUrl": "https://www.xiaohongshu.com/user/profile/5a122a664eacab5b02fc838c?xsec_token=ABG13J9-hTJzbVnmhaqxTPoZtkcxwDxMA8GUU1uqqzc6A%3D&xsec_source=pc_search",
+      "sourceBatch": "downloads-27",
+      "sourceOrder": 20
+    },
+    {
+      "id": "agent-d036",
+      "code": "E032",
+      "name": "豌豆壮壮",
+      "slug": "expert-profile-24",
+      "icon": "UserRound",
+      "summary": "知行合一的认知实验者，在 AI 时代做深度阅读、自我剖析与技术问题的价值化叙事。",
+      "quote": "用工程思维研究人性，用人文关怀审视技术。",
+      "group": "D",
+      "role": "expert",
+      "category": "expert",
+      "capabilities": [
+        "learning",
+        "analysis",
+        "reflection",
+        "documentation"
+      ],
+      "avatarMode": "portrait",
+      "avatarSrc": "./mock/portraits/豌豆壮壮.png",
+      "avatarScale": 2.92,
+      "profileUrl": "https://www.xiaohongshu.com/user/profile/5f7b5e63000000000101d422?xsec_token=ABqJgGW79b_41DGmmasw-k1QJY8Lj34Ny8CSDkdzhnRcE%3D&xsec_source=pc_search",
+      "sourceBatch": "downloads-27",
+      "sourceOrder": 24
+    }
+  ]
+}

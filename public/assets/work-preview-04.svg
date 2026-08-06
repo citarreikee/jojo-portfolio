@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760">
+  <rect width="1200" height="760" fill="#9b989d"/>
+  <g fill="none" stroke="#0d0d0d" stroke-width="2">
+    <path d="M70 620C220 270 395 195 600 380s380 110 530-240"/>
+    <path d="M70 675C220 325 395 250 600 435s380 110 530-240"/>
+    <path d="M70 565C220 215 395 140 600 325s380 110 530-240"/>
+  </g>
+  <rect x="455" y="200" width="290" height="360" fill="#efeee9"/>
+  <text x="54" y="74" fill="#efeee9" font-family="Helvetica,Arial,sans-serif" font-size="24" letter-spacing="6">WORK / 04</text>
+  <text x="600" y="360" text-anchor="middle" fill="#0d0d0d" font-family="Helvetica,Arial,sans-serif" font-size="64">CONTEXT</text>
+  <text x="600" y="418" text-anchor="middle" fill="#0d0d0d" font-family="Helvetica,Arial,sans-serif" font-size="25" letter-spacing="5">MEMORY WITH MEANING</text>
+</svg>

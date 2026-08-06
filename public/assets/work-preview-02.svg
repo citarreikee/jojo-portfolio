@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760">
+  <rect width="1200" height="760" fill="#efeee9"/>
+  <rect x="54" y="54" width="1092" height="652" fill="none" stroke="#0d0d0d" stroke-width="2"/>
+  <path d="M54 215h1092M410 54v652M790 54v652" fill="none" stroke="#0d0d0d" stroke-width="2"/>
+  <circle cx="600" cy="452" r="128" fill="#0d0d0d"/>
+  <text x="84" y="132" fill="#0d0d0d" font-family="Helvetica,Arial,sans-serif" font-size="24" letter-spacing="6">WORK / 02</text>
+  <text x="600" y="180" text-anchor="middle" fill="#0d0d0d" font-family="Helvetica,Arial,sans-serif" font-size="68">VISIBLE SYSTEMS</text>
+  <text x="600" y="468" text-anchor="middle" fill="#efeee9" font-family="Helvetica,Arial,sans-serif" font-size="31" letter-spacing="3">LEARN BY SEEING</text>
+</svg>

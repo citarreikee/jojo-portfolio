@@ -1,0 +1,1 @@
+import{f as a}from"./DbkfmWwE.js";import{f as u,m as f}from"./CuZ8VJ3N.js";function p(r,e){let t;return i;function i(n){return u(n)?(r.enter("lineEnding"),r.consume(n),r.exit("lineEnding"),t=!0,i):f(n)?a(r,i,t?"linePrefix":"lineSuffix")(n):e(n)}}export{p as f};
