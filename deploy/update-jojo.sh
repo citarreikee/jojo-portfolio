@@ -5,6 +5,10 @@ APP_ROOT="/home/citarreikee/jojo-portfolio"
 SITE_ROOT="/home/citarreikee/jojo-site"
 REPO="https://github.com/citarreikee/jojo-portfolio.git"
 
+# The service runs as root while the working tree is owned by the site user.
+# Mark only this exact checkout as trusted for Git's ownership check.
+git config --global --add safe.directory "$APP_ROOT" 2>/dev/null || true
+
 if [[ ! -d "$APP_ROOT/.git" ]]; then
   git clone "$REPO" "$APP_ROOT"
 else
