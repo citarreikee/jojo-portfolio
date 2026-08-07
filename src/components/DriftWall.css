@@ -163,17 +163,6 @@
   box-shadow: 0 30px 100px rgba(0, 0, 0, 0.5);
 }
 
-.drift-wall__lightbox-content figcaption {
-  max-width: 80vw;
-  color: rgba(239, 238, 233, 0.62);
-  font-family: 'Helvetica Neue ME', Helvetica, Arial, sans-serif;
-  font-size: 0.68rem;
-  letter-spacing: 0.18em;
-  line-height: 1.4;
-  text-align: center;
-  text-transform: uppercase;
-}
-
 .drift-wall__lightbox-close {
   position: absolute;
   top: 1.25rem;

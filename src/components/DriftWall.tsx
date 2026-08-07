@@ -388,7 +388,6 @@ export default function DriftWall({
           </button>
           <figure className="drift-wall__lightbox-content">
             <img src={previewItem.image} alt={previewItem.title ?? ''} decoding="async" draggable={false} />
-            {previewItem.title && <figcaption>{previewItem.title}</figcaption>}
           </figure>
         </div>,
         document.body,
