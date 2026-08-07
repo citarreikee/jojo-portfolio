@@ -1,0 +1,25 @@
+server {
+    listen 443 ssl;
+    server_name entropyfield.com;
+
+    root /home/citarreikee/entroWEB/dist;
+    index index.html;
+
+    location = /jojo {
+        return 301 /jojo/;
+    }
+
+    location /jojo/ {
+        alias /home/citarreikee/jojo-site/;
+        try_files $uri $uri/ /jojo/index.html;
+    }
+
+    location / {
+        try_files $uri /index.html;
+    }
+
+    ssl_certificate /etc/letsencrypt/live/entropyfield.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/entropyfield.com/privkey.pem;
+    include /etc/letsencrypt/options-ssl-nginx.conf;
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
+}

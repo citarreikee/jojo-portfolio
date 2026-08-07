@@ -1,0 +1,8 @@
+[Unit]
+Description=Update Jojo portfolio from GitHub
+After=network-online.target
+
+[Service]
+Type=oneshot
+User=root
+ExecStart=/usr/local/sbin/update-jojo
