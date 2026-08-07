@@ -124,18 +124,16 @@ export default function DriftWall({
   }, [])
 
   const columnItems = useMemo(() => {
-    const nextColumns = Array.from({ length: columns }, () => [] as DriftWallItem[])
-    items.forEach((item, index) => nextColumns[index % columns].push(item))
-    const targetLength = Math.max(1, Math.ceil(items.length / columns))
-    return nextColumns.map((column, columnIndex) => {
-      const filled = [...column]
-      let cursor = columnIndex
-      while (filled.length < targetLength && items.length > 0) {
-        filled.push(items[cursor % items.length])
-        cursor += columns
-      }
-      return filled
+    const seenImages = new Set<string>()
+    const uniqueItems = items.filter((item) => {
+      if (seenImages.has(item.image)) return false
+      seenImages.add(item.image)
+      return true
     })
+    const columnCount = Math.max(1, Math.min(columns, uniqueItems.length || 1))
+    const nextColumns = Array.from({ length: columnCount }, () => [] as DriftWallItem[])
+    uniqueItems.forEach((item, index) => nextColumns[index % columnCount].push(item))
+    return nextColumns.filter((column) => column.length > 0)
   }, [items, columns])
 
   const columnMeta = useMemo(() => {
