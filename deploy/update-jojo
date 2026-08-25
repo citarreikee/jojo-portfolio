@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+exec 9>/run/lock/update-jojo.lock
+flock -n 9 || exit 0
+
+APP_ROOT="/home/citarreikee/jojo-portfolio"
+SITE_ROOT="/home/citarreikee/jojo-site"
+REPO="https://github.com/citarreikee/jojo-portfolio.git"
+
+git config --global --add safe.directory "$APP_ROOT" 2>/dev/null || true
+
+if [[ ! -d "$APP_ROOT/.git" ]]; then
+  git clone "$REPO" "$APP_ROOT"
+fi
+
+git -C "$APP_ROOT" fetch --prune origin main
+LOCAL_HEAD="$(git -C "$APP_ROOT" rev-parse HEAD)"
+REMOTE_HEAD="$(git -C "$APP_ROOT" rev-parse origin/main)"
+
+if [[ "$LOCAL_HEAD" == "$REMOTE_HEAD" ]]; then
+  echo "Jojo portfolio already current at $LOCAL_HEAD"
+  exit 0
+fi
+
+git -C "$APP_ROOT" reset --hard origin/main
+cd "$APP_ROOT"
+npm ci --no-audit --no-fund
+npm run build
+
+STAGE="$(mktemp -d /home/citarreikee/jojo-site.XXXXXX)"
+trap 'rm -rf "$STAGE"' EXIT
+cp -a dist/. "$STAGE/"
+chown -R citarreikee:citarreikee "$APP_ROOT" "$STAGE"
+
+mkdir -p "$SITE_ROOT"
+find "$SITE_ROOT" -mindepth 1 -maxdepth 1 -exec rm -rf {} +
+cp -a "$STAGE/." "$SITE_ROOT/"
+chown -R citarreikee:citarreikee "$SITE_ROOT"
+nginx -t
+systemctl reload nginx
+
+echo "Jojo portfolio deployed at $REMOTE_HEAD"
