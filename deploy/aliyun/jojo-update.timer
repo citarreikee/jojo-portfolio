@@ -1,0 +1,8 @@
+[Unit]
+Description=Check Jojo portfolio for updates
+[Timer]
+OnBootSec=5min
+OnUnitInactiveSec=5min
+Unit=jojo-update.service
+[Install]
+WantedBy=timers.target

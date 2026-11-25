@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+set -euo pipefail
+exec 9>/run/lock/jojo-update.lock
+flock -n 9 || exit 0
+APP_ROOT=/opt/jojo/repo
+SITE_ROOT=/opt/jojo/current
+git -C "$APP_ROOT" fetch --prune origin main
+REVISION=$(git -C "$APP_ROOT" rev-parse origin/main)
+if [[ "$(cat "$SITE_ROOT/.deployed-revision" 2>/dev/null || true)" == "$REVISION" ]]; then
+  echo "Already deployed: $REVISION"
+  exit 0
+fi
+git -C "$APP_ROOT" reset --hard "$REVISION"
+cd "$APP_ROOT"
+npm ci --no-audit --no-fund
+npm run build -- --base=/
+RELEASE=$(mktemp -d "/opt/jojo/releases/${REVISION:0:12}.XXXXXX")
+cp -a dist/. "$RELEASE/"
+printf '%s\n' "$REVISION" > "$RELEASE/.deployed-revision"
+chmod -R a+rX "$RELEASE"
+ln -s "$RELEASE" /opt/jojo/current.next
+mv -Tf /opt/jojo/current.next "$SITE_ROOT"
+echo "Deployed: $REVISION"

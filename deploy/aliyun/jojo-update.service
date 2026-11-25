@@ -1,0 +1,10 @@
+[Unit]
+Description=Build and atomically publish Jojo portfolio
+After=network-online.target
+Wants=network-online.target
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/update-jojo
+TimeoutStartSec=15min
+Nice=10
+CPUQuota=100%
