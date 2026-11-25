@@ -2,7 +2,9 @@
 jojo.entropyfield.com {
     encode zstd gzip
     @private path /.deployed-revision /.git/*
-    respond @private 404
+    handle @private {
+        respond 404
+    }
     handle /github {
         reverse_proxy 127.0.0.1:9187
     }
