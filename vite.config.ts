@@ -18,7 +18,11 @@ function galleryManifestPlugin() {
           .replace(/\.[^.]+$/, '')
           .replace(/[-_]+/g, ' ')
           .replace(/\b\w/g, (letter) => letter.toUpperCase())
-        return `{ image: ${JSON.stringify(`/assets/gallery/${encodeURIComponent(file)}`)}, title: ${JSON.stringify(title)} }`
+        const optimized = path.join('webp', `${file}.webp`)
+        const imagePath = fs.existsSync(path.join(galleryDir, optimized))
+          ? `/assets/gallery/webp/${encodeURIComponent(file)}.webp`
+          : `/assets/gallery/${encodeURIComponent(file)}`
+        return `{ image: ${JSON.stringify(imagePath)}, title: ${JSON.stringify(title)} }`
       })
       .join(',\n')
   }
