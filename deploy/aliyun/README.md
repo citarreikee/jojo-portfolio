@@ -16,7 +16,7 @@ Its root-only environment file is `/etc/jojo-webhook.env`; never commit its cont
 GitHub push webhook target: `https://jojo.entropyfield.com/github`.
 
 Append the site block from `jojo.caddy` to the existing Caddyfile, validate, then reload.
-The localhost:18081 endpoint permits pre-DNS verification; remove it after HTTPS verification.
+DNS and HTTPS were verified during migration on 2026-11-25.
 The previous Caddyfile is backed up at `/opt/jojo/Caddyfile.before-jojo`.
 Previous published releases remain in `/opt/jojo/releases` for rollback.
 

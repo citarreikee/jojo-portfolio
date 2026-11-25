@@ -1,5 +1,5 @@
 
-jojo.entropyfield.com, http://127.0.0.1:18081 {
+jojo.entropyfield.com {
     encode zstd gzip
     @private path /.deployed-revision /.git/*
     respond @private 404
