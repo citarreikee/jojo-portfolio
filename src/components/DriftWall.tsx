@@ -95,6 +95,7 @@ export default function DriftWall({
   const pointerRef = useRef({ x: 0, y: 0 })
   const pointerDampedRef = useRef({ x: 0, y: 0 })
   const lastTsRef = useRef<number | null>(null)
+  const pressedPointerRef = useRef<number | null>(null)
   const activeIdRef = useRef<string | null>(null)
   const [containerHeight, setContainerHeight] = useState(600)
   const [activeId, setActiveId] = useState<string | null>(null)
@@ -183,6 +184,12 @@ export default function DriftWall({
       const deltaTime = Math.min(0.05, Math.max(0, timestamp - lastTsRef.current) / 1000)
       lastTsRef.current = timestamp
 
+      // Keep the pressed picture stationary until the browser dispatches click.
+      if (pressedPointerRef.current !== null) {
+        rafRef.current = requestAnimationFrame(animate)
+        return
+      }
+
       const maxTilt = parallax * 8
       const targetX = pointerRef.current.x * maxTilt
       const targetY = -pointerRef.current.y * maxTilt
@@ -258,6 +265,16 @@ export default function DriftWall({
     release()
   }, [release])
 
+  const handleTilePointerDown = useCallback((event: ReactPointerEvent<HTMLElement>) => {
+    if (!event.isPrimary || event.button !== 0) return
+    pressedPointerRef.current = event.pointerId
+    event.currentTarget.setPointerCapture(event.pointerId)
+  }, [])
+
+  const releasePointer = useCallback(() => {
+    pressedPointerRef.current = null
+  }, [])
+
   const openPreview = useCallback((item: DriftWallItem) => {
     setPreviewItem(item)
   }, [])
@@ -295,6 +312,10 @@ export default function DriftWall({
           className={className}
           data-tile-id={id}
           data-col={column}
+          onPointerDown={handleTilePointerDown}
+          onPointerUp={releasePointer}
+          onPointerCancel={releasePointer}
+          onLostPointerCapture={releasePointer}
           onFocus={() => activate(id, column)}
           onBlur={release}
           onClick={(event) => {
@@ -308,26 +329,23 @@ export default function DriftWall({
     }
 
     return (
-      <div
+      <button
         key={id}
-        tabIndex={0}
-        role="button"
+        type="button"
         aria-label={item.title ?? 'tile'}
         className={className}
         data-tile-id={id}
         data-col={column}
+        onPointerDown={handleTilePointerDown}
+        onPointerUp={releasePointer}
+        onPointerCancel={releasePointer}
+        onLostPointerCapture={releasePointer}
         onFocus={() => activate(id, column)}
         onBlur={release}
         onClick={() => openPreview(item)}
-        onKeyDown={(event) => {
-          if (event.key === 'Enter' || event.key === ' ') {
-            event.preventDefault()
-            openPreview(item)
-          }
-        }}
       >
         {inner}
-      </div>
+      </button>
     )
   }
 
