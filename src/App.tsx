@@ -17,13 +17,12 @@ import LogoLoop, { type LogoLoopItem } from './components/LogoLoop'
 import MistrePreview from './components/MistrePreview'
 import VisibleManusPreview from './components/VisibleManusPreview'
 import galleryManifest from 'virtual:gallery-items'
-import { preloadImages } from './utils/preloadImages'
 
 const publicPath = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\//, '')}`
 
 const Lanyard = lazy(() => import('./components/Lanyard'))
 
-const portraitImage = publicPath('/assets/marcus-portrait-hero.png')
+const portraitImage = publicPath('/assets/marcus-portrait-hero.webp')
 
 const navLinks = [
   { label: 'Story', href: '#story' },
@@ -278,6 +277,8 @@ function Hero() {
 
       <img
         src={portraitImage}
+        fetchPriority="high"
+        decoding="async"
         alt="Portrait"
         className="anim-rise-in pointer-events-none absolute inset-0 z-20 h-full w-full object-cover"
         style={animationDelay(300)}
@@ -614,15 +615,31 @@ function Services() {
 }
 
 function Gallery() {
+  const sectionRef = useRef<HTMLElement>(null)
+  const [nearViewport, setNearViewport] = useState(false)
+
+  useEffect(() => {
+    const section = sectionRef.current
+    if (!section) return
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        setNearViewport(true)
+        observer.disconnect()
+      }
+    }, { rootMargin: '600px' })
+    observer.observe(section)
+    return () => observer.disconnect()
+  }, [])
+
   return (
-    <section id="gallery" className="relative h-[100dvh] min-h-[640px] overflow-hidden pb-10 text-cream sm:pb-14">
+    <section ref={sectionRef} id="gallery" className="relative h-[100dvh] min-h-[640px] overflow-hidden pb-10 text-cream sm:pb-14">
       <Reveal className="absolute inset-x-6 top-7 z-20 flex justify-between border-b border-cream/20 pb-3 font-hn text-[10px] uppercase tracking-[0.2em] text-cream/50 sm:inset-x-10 sm:top-10 sm:pb-4 sm:text-xs">
         <span>04 — Gallery</span>
         <span>Jojo</span>
       </Reveal>
 
       <Reveal className="absolute inset-x-0 bottom-14 top-32 sm:bottom-20 sm:top-36" delay={80}>
-        <DriftWall
+        {nearViewport && <DriftWall
           items={galleryItems}
           columns={6}
           tileWidth={200}
@@ -641,7 +658,7 @@ function Gallery() {
           dim={0.55}
           grayscale
           overlayColor="#0d0d0d"
-        />
+        />}
       </Reveal>
     </section>
   )
@@ -725,8 +742,6 @@ function SiteFooter() {
 }
 
 function App() {
-  useEffect(() => preloadImages(galleryItems.map((item) => item.image)), [])
-
   return (
     <main className="bg-[#0d0d0d]">
       <Hero />
