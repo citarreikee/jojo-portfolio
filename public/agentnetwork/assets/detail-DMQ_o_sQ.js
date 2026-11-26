@@ -21418,16 +21418,6 @@ Recommended structure for writing projects:
 
         <div class="dossier-section">
           <div class="dossier-section-head">
-            <span class="detail-label">Dynamic signals</span>
-            <span>${t?"Live":"Idle snapshot"}</span>
-          </div>
-          <div class="dossier-metric-grid">
-            ${p.map(dn).join("")}
-          </div>
-        </div>
-
-        <div class="dossier-section">
-          <div class="dossier-section-head">
             <span class="detail-label">Sources</span>
             <span>${f.dossier?.sources?.length||1}</span>
           </div>
@@ -21448,7 +21438,7 @@ Recommended structure for writing projects:
       <article class="panel dossier-main">
         <div class="dossier-main-head">
           <div>
-            <span class="tab-kicker">Full Content</span>
+            <span class="tab-kicker">Persona & Source Material</span>
             <h2>${y(f.dossier?.title||e.name)}</h2>
           </div>
         </div>

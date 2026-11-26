@@ -1,0 +1,17 @@
+.experiment-folders{position:relative;padding-bottom:30px!important;overflow:visible}
+.folder-anchor{position:absolute;top:0}
+.experiment-folder-pair{display:grid;grid-template-columns:1fr 1fr;max-width:1200px;margin:0 auto;gap:50px;padding:220px 30px 80px}
+.experiment-folder-cell{display:grid;place-items:center;min-width:0;position:relative;isolation:isolate}
+.experiment-folder-cell:focus-within,.experiment-folder-cell:hover{z-index:3}
+.folder-project-sheet{height:100%;width:100%;background:#efeee9;color:#18181b;display:flex;flex-direction:column;padding:8px;gap:10px}.folder-project-sheet img{width:100%;min-height:0;flex:1;object-fit:cover;border-radius:5px}.folder-project-sheet strong{font:12px Arial;padding:5px}
+.experiment-folder-pair .folder-float__item{max-width:330px;white-space:normal;text-align:left;font-size:12px}
+.experiment-dialog{width:min(1100px,calc(100vw - 40px));max-height:90svh;padding:0;border:1px solid #efeee940;border-radius:16px;background:#111;color:#efeee9;overflow:auto;margin:auto;box-shadow:0 30px 120px #0009}
+.experiment-dialog::backdrop{background:#000b;backdrop-filter:blur(8px)}
+.experiment-dialog-page{padding:28px 42px 48px}.experiment-dialog-close{display:block;position:sticky;top:16px;margin-left:auto;z-index:10;background:#efeee9;color:#111;border-radius:24px;padding:10px 18px;font-size:12px;cursor:pointer}.experiment-dialog .evidence-lab{margin-top:16px;padding-top:16px;border-top:0}.experiment-dialog .experiment{border-top:0;margin-top:24px}.experiment-dialog .experiment>header{padding:20px 0}.experiment-dialog .experiment>header h2{font-size:32px;font-weight:400;line-height:1.25;margin-top:14px}.experiment-dialog .experiment-body{display:block}.experiment-dialog .read-label{display:none}.experiment-dialog .experiment>summary{pointer-events:none;list-style:none}.experiment-dialog .lab-live{height:650px}.experiment-dialog .lab-video{max-height:65svh}
+@media(max-width:700px){.experiment-folder-pair{gap:12px;padding:210px 0 50px}.experiment-folder-cell>.folder-root{transform:scale(.65);transform-origin:center}.experiment-folder-cell>.folder-float{transform:scale(.65);transform-origin:center}.experiment-dialog{width:calc(100vw - 20px);max-height:94svh}.experiment-dialog-page{padding:18px}.experiment-dialog .experiment>header h2{font-size:25px}}
+
+@media(max-width:700px){.experiment-folder-cell{transition:translate 300ms ease}.project-folder-cell.is-open{translate:calc(50% + 6px) 0;z-index:4}.note-folder-cell.is-open{translate:calc(-50% - 6px) 0;z-index:4}.experiment-folder-pair .folder-float__item{max-width:300px}}
+.experiment-folder-pair .folder-float__item{width:320px;min-width:320px;max-width:320px;height:44px;line-height:1.3;white-space:normal;padding:6px 14px}
+@media(max-width:700px){.experiment-folder-pair .folder-float__item{max-width:320px}.experiment-folder-pair{padding-top:250px}}
+
+.note-permalink{display:inline-block;font-size:12px;color:#aaa;text-decoration:underline;margin-bottom:26px;padding-right:100px}

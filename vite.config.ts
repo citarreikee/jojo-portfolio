@@ -51,6 +51,6 @@ function galleryManifestPlugin() {
 export default defineConfig({
   plugins: [react(), galleryManifestPlugin()],
   assetsInclude: ['**/*.glb'],
-  // The site is served from https://entropyfield.com/jojo/.
-  base: '/jojo/',
+  // Standalone production hostname: jojo.entropyfield.com.
+  base: '/',
 })

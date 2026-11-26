@@ -5,8 +5,8 @@ Server: `47.76.238.44` (existing Caddy host)
 Repository checkout: `/opt/jojo/repo`
 Published root: `/opt/jojo/current` (symlink to a successful release)
 
-Build with `npm ci --no-audit --no-fund` and `npm run build -- --base=/`.
-The original Vite default remains `/jojo/` for compatibility with the old deployment.
+Build with `npm ci --no-audit --no-fund` and `npm run build` followed by `npm run check:seo`.
+The Vite base is `/`. The build prerenders the homepage and standalone notes, with search metadata, a sitemap and robots.txt.
 
 `update-jojo` fetches main and switches the published symlink only after a successful build.
 Install it at `/usr/local/sbin/update-jojo`, with `jojo-update.service` in `/etc/systemd/system`.

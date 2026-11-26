@@ -13,7 +13,8 @@ fi
 git -C "$APP_ROOT" reset --hard "$REVISION"
 cd "$APP_ROOT"
 npm ci --no-audit --no-fund
-npm run build -- --base=/
+npm run build
+npm run check:seo
 RELEASE=$(mktemp -d "/opt/jojo/releases/${REVISION:0:12}.XXXXXX")
 cp -a dist/. "$RELEASE/"
 printf '%s\n' "$REVISION" > "$RELEASE/.deployed-revision"

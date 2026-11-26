@@ -8,14 +8,10 @@ import {
   type ReactNode,
 } from 'react'
 import { ArrowUpRight, X } from 'lucide-react'
-import AccordionGallery from './components/AccordionGallery'
-import AgentNetworkPreview from './components/AgentNetworkPreview'
-import ContextOSPreview from './components/ContextOSPreview'
+import ExperimentFolders from './components/ExperimentFolders'
+import WorksCarousel, { WorkMedia, works } from './components/WorksCarousel'
 import DriftWall, { type DriftWallItem } from './components/DriftWall'
-import EntroFlowPreview from './components/EntroFlowPreview'
 import LogoLoop, { type LogoLoopItem } from './components/LogoLoop'
-import MistrePreview from './components/MistrePreview'
-import VisibleManusPreview from './components/VisibleManusPreview'
 import galleryManifest from 'virtual:gallery-items'
 
 const publicPath = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\//, '')}`
@@ -27,6 +23,7 @@ const portraitImage = publicPath('/assets/marcus-portrait-hero.webp')
 const navLinks = [
   { label: 'Story', href: '#story' },
   { label: 'Works', href: '#jobs' },
+  { label: 'Experiments & Notes', href: '#experiments' },
   { label: 'Services', href: '#services' },
   { label: 'Gallery', href: '#gallery' },
   { label: 'Contact', href: '#message' },
@@ -36,29 +33,6 @@ const socialLinks = [
   { label: 'GitHub', href: 'https://github.com/citarreikee' },
   { label: 'X', href: 'https://x.com/citarreikee' },
   { label: 'RedNote', href: 'https://xhslink.com/m/8feyjuHEnoM' },
-]
-
-const workConcepts = [
-  {
-    title: 'ConnectMe',
-    preview: (active: boolean) => <MistrePreview active={active} />,
-  },
-  {
-    title: 'Visible Manus',
-    preview: (active: boolean) => <VisibleManusPreview active={active} />,
-  },
-  {
-    title: 'ContextOS',
-    preview: (active: boolean) => <ContextOSPreview active={active} />,
-  },
-  {
-    title: 'EntroFlow',
-    preview: (active: boolean) => <EntroFlowPreview active={active} />,
-  },
-  {
-    title: 'AgentNetwork-Red',
-    preview: (active: boolean) => <AgentNetworkPreview active={active} />,
-  },
 ]
 
 const services = [
@@ -512,42 +486,6 @@ function Story() {
   )
 }
 
-function Jobs() {
-  return (
-    <section
-      id="jobs"
-      className="relative h-[100dvh] overflow-hidden px-6 py-8 text-cream sm:px-10 sm:py-10"
-    >
-      <Reveal className="absolute inset-x-6 top-8 z-[3200] flex justify-between border-b border-cream/20 pb-4 font-hn text-xs uppercase tracking-[0.2em] text-cream/50 sm:inset-x-10 sm:top-10">
-        <span>02 — Works</span>
-        <span>Jojo</span>
-      </Reveal>
-
-      <Reveal className="h-full" delay={100}>
-        <div className="flex h-full items-center pt-14 sm:pt-16">
-          <AccordionGallery
-            items={workConcepts.map((item) => ({
-              label: item.title,
-              link: '#',
-              alt: item.title,
-              preview: item.preview,
-            }))}
-            defaultIndex={0}
-            expandRatio={0.52}
-            trigger="hover"
-            accentColor="#efeee9"
-            overlayColor="#0d0d0d"
-            textColor="#efeee9"
-            height={560}
-            gap={10}
-            radius={20}
-          />
-        </div>
-      </Reveal>
-    </section>
-  )
-}
-
 function Services() {
   return (
     <section
@@ -555,7 +493,7 @@ function Services() {
       className="relative flex h-[100dvh] min-h-[640px] flex-col overflow-hidden px-6 pb-[clamp(3rem,6vh,5rem)] pt-8 text-cream sm:px-10 sm:pt-10"
     >
       <Reveal className="flex w-full justify-between border-b border-cream/20 pb-3 font-hn text-[10px] uppercase tracking-[0.2em] text-cream/50 sm:pb-4 sm:text-xs">
-        <span>03 — Services</span>
+        <span>04 — Services</span>
         <span>Jojo</span>
       </Reveal>
 
@@ -634,7 +572,7 @@ function Gallery() {
   return (
     <section ref={sectionRef} id="gallery" className="relative h-[100dvh] min-h-[640px] overflow-hidden pb-10 text-cream sm:pb-14">
       <Reveal className="absolute inset-x-6 top-7 z-20 flex justify-between border-b border-cream/20 pb-3 font-hn text-[10px] uppercase tracking-[0.2em] text-cream/50 sm:inset-x-10 sm:top-10 sm:pb-4 sm:text-xs">
-        <span>04 — Gallery</span>
+        <span>05 — Gallery</span>
         <span>Jojo</span>
       </Reveal>
 
@@ -668,7 +606,7 @@ function Message() {
   return (
     <section id="message" className="overflow-hidden py-24 text-cream sm:py-36">
       <div className="px-6 sm:px-10">
-        <SectionLabel index="05" title="Contact" />
+        <SectionLabel index="06" title="Contact" />
       </div>
 
       <Reveal>
@@ -733,6 +671,7 @@ function SiteFooter() {
       <div className="flex flex-col gap-3 text-xs text-cream/50 sm:flex-row sm:justify-between sm:gap-8">
         <p>© 2026 Jojo</p>
         <p>Shenzhen, China</p>
+        <a href="/notes/" className="transition-opacity duration-300 hover:opacity-60">Notes ↗</a>
         <a href="#" className="transition-opacity duration-300 hover:opacity-60">
           Back to top ↑
         </a>
@@ -742,12 +681,16 @@ function SiteFooter() {
 }
 
 function App() {
+  const preview = new URLSearchParams(typeof window === "undefined" ? "" : window.location.search).get("preview");
+  if (preview && works.some(p => p.id === preview)) return <div className="capture-stage"><WorkMedia id={preview}/></div>;
   return (
     <main className="bg-[#0d0d0d]">
+      <h1 className="sr-only">Jojorn (Jojo) Sun — AI Founder &amp; Spatial Intelligence Builder</h1>
       <Hero />
       <div className="relative z-30 rounded-t-[1.5rem] border-t border-cream/20 bg-[#0d0d0d] shadow-[0_-24px_60px_rgba(0,0,0,0.32)] sm:rounded-t-[2rem]">
         <Story />
-        <Jobs />
+        <WorksCarousel />
+        <ExperimentFolders />
         <Services />
         <Gallery />
         <Message />

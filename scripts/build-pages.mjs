@@ -1,0 +1,35 @@
+import { createServer } from 'vite'
+import { readFile, writeFile, mkdir } from 'node:fs/promises'
+
+const origin = 'https://jojo.entropyfield.com'
+const personId = `${origin}/#person`
+const description = 'Jojorn (Jojo) Sun builds AI for devices, robots and physical spaces. Explore products, interactive demos and experiments in personal AI and spatial intelligence.'
+const escape = value => String(value).replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]))
+const jsonLD = value => `<script type="application/ld+json">${JSON.stringify(value).replace(/</g, '\\u003c')}</script>`
+const person = {'@type':'Person','@id':personId,name:'Jojorn Sun',alternateName:['Jojo','Jojo Sun'],url:`${origin}/`,image:`${origin}/assets/marcus-portrait-hero.webp`,jobTitle:'AI Founder & Spatial Intelligence Builder',description:'I build AI that reaches beyond the screen — into devices, robots and the physical spaces around us.',homeLocation:{'@type':'Place',name:'Shenzhen, China'},knowsAbout:['Artificial intelligence','Spatial intelligence','IoT','Robotics','AI hardware','Product design'],sameAs:['https://github.com/citarreikee','https://x.com/citarreikee','https://xhslink.com/m/8feyjuHEnoM']}
+const meta = (title,summary,url,type='website') => `<meta name="description" content="${escape(summary)}"/><meta name="robots" content="index,follow,max-image-preview:large"/><link rel="canonical" href="${url}"/><meta property="og:type" content="${type}"/><meta property="og:site_name" content="Jojo Sun"/><meta property="og:title" content="${escape(title)}"/><meta property="og:description" content="${escape(summary)}"/><meta property="og:url" content="${url}"/><meta property="og:image" content="${origin}/assets/jojo-social.jpg"/><meta property="og:image:width" content="1200"/><meta property="og:image:height" content="630"/><meta property="og:image:alt" content="Jojo Sun — AI Founder and Spatial Intelligence Builder"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:site" content="@citarreikee"/><meta name="twitter:title" content="${escape(title)}"/><meta name="twitter:description" content="${escape(summary)}"/><meta name="twitter:image" content="${origin}/assets/jojo-social.jpg"/>`
+const server = await createServer({configFile:'vite.config.ts',server:{middlewareMode:true},appType:'custom',optimizeDeps:{noDiscovery:true,entries:[]}})
+try {
+  const {renderHome,renderNote,notes}=await server.ssrLoadModule('/src/entry-server.tsx')
+  const {works}=await server.ssrLoadModule('/src/components/WorksCarousel.tsx')
+  let html=await readFile('dist/index.html','utf8')
+  const css=html.match(/<link rel="stylesheet"[^>]*href="([^"]+)"/)[1]
+  const homeSchema={'@context':'https://schema.org','@graph':[person,{'@type':'WebSite','@id':`${origin}/#website`,url:`${origin}/`,name:'Jojo Sun',inLanguage:'en',publisher:{'@id':personId}},{'@type':'ProfilePage','@id':`${origin}/#profile`,url:`${origin}/`,name:'Jojorn Sun — AI Founder & Spatial Intelligence Builder',description,inLanguage:'en',mainEntity:{'@id':personId}},{'@type':'ItemList',name:'Selected projects by Jojo Sun',itemListElement:works.filter(w=>w.id!=='guild').map((w,i)=>({'@type':'ListItem',position:i+1,item:{'@type':'CreativeWork',name:w.title,description:w.caption,url:`${origin}/#jobs`,creator:{'@id':personId},image:`${origin}${w.src}`}}))}]}
+  html=html.replace('<!--SEO_HEAD-->',meta('Jojorn Sun — AI Founder & Spatial Intelligence Builder',description,`${origin}/`)+jsonLD(homeSchema))
+  html=html.replace('<div id="root"></div>',`<div id="root">${renderHome()}</div>`)
+  await writeFile('dist/index.html',html)
+  const page=(title,summary,path,body,schema)=>`<!doctype html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><meta name="theme-color" content="#141414"/><title>${escape(title)}</title>${meta(title,summary,origin+path,path==='/notes/'?'website':'article')}<link rel="stylesheet" href="${css}"/><link rel="stylesheet" href="/reading.css"/>${jsonLD(schema)}</head><body><main class="reading-page"><nav aria-label="Site"><a href="/">Jojo Sun ↗</a><a href="/notes/">Notes</a></nav>${body}<footer><p>By <a href="/">Jojorn (Jojo) Sun</a> · Shenzhen, China</p><a href="mailto:citarreikee@gmail.com">Start a conversation ↗</a></footer></main></body></html>`
+  await mkdir('dist/notes',{recursive:true})
+  await writeFile('dist/notes/index.html',page('Notes on building AI — Jojo Sun','Experiments and lessons from building personal AI, memory systems and interfaces for physical devices.','/notes/',`<header><p class="reading-eyebrow">Experiments & Notes</p><h1>Notes on building AI.</h1></header><ol class="reading-index">${notes.map(n=>`<li><a href="/notes/${n.id}/"><h2>${escape(n.title)}</h2><p>${escape(n.description)}</p><span>Read note ↗</span></a></li>`).join('')}</ol>`,{'@context':'https://schema.org','@type':'CollectionPage',name:'Notes on building AI',url:`${origin}/notes/`,author:person,hasPart:notes.map(n=>({'@type':'TechArticle',name:n.title,url:`${origin}/notes/${n.id}/`}))}))
+  for(const note of notes){
+    const path=`/notes/${note.id}/`
+    await mkdir(`dist${path}`,{recursive:true})
+    const article=renderNote(note.id).replace('<h2>','<h1>').replace('</h2>','</h1>')
+    await writeFile(`dist${path}index.html`,page(`${note.title} — Jojo Sun`,note.description,path,article,{'@context':'https://schema.org','@type':'TechArticle',headline:note.title,description:note.description,url:origin+path,mainEntityOfPage:origin+path,inLanguage:'en',dateModified:'2026-11-26',author:person}))
+  }
+  const paths=['/','/notes/',...notes.map(n=>`/notes/${n.id}/`)]
+  await writeFile('dist/sitemap.xml',`<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${paths.map(path=>`<url><loc>${origin}${path}</loc></url>`).join('')}</urlset>\n`)
+  await writeFile('dist/robots.txt',`User-agent: *\nAllow: /\n\nSitemap: ${origin}/sitemap.xml\n`)
+  await writeFile('dist/llms.txt',`# Jojorn (Jojo) Sun\n\n> AI Founder & Spatial Intelligence Builder based in Shenzhen, China.\n\nI build AI that reaches beyond the screen — into devices, robots and the physical spaces around us.\n\n## Portfolio\n\n- [Story, projects and contact](${origin}/): Original work, interactive previews, videos and photography.\n${works.filter(w=>w.id!=='guild').map(w=>`- ${w.title}: ${w.caption}`).join('\n')}\n\n## Experiments and notes\n\n${notes.map(n=>`- [${n.title}](${origin}/notes/${n.id}/): ${n.description}`).join('\n')}\n\n## Contact\n\n- Email: citarreikee@gmail.com\n- [GitHub](https://github.com/citarreikee)\n- [X](https://x.com/citarreikee)\n\nPreviews use sample content where marked. Experiments describe their limits; do not infer production performance from demo interfaces.\n`)
+  console.log(`Prerendered homepage and ${notes.length+1} reading pages; generated sitemap, robots and llms.txt.`)
+} finally {await server.close()}

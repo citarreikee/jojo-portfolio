@@ -22,6 +22,8 @@ export type AccordionGalleryItem = {
 type AccordionGalleryProps = {
   items?: AccordionGalleryItem[]
   defaultIndex?: number
+  activeIndex?: number
+  onActiveChange?: (index: number) => void
   accentColor?: string
   overlayColor?: string
   textColor?: string
@@ -52,6 +54,8 @@ const defaultItems: AccordionGalleryItem[] = [
 function AccordionGallery({
   items = defaultItems,
   defaultIndex = 2,
+  activeIndex,
+  onActiveChange,
   accentColor = '#ffffff',
   overlayColor = '#060010',
   textColor = '#ffffff',
@@ -80,9 +84,14 @@ function AccordionGallery({
   const mediaSizeRef = useRef(320)
   const vertical = orientation === 'vertical'
   const count = items.length
-  const [active, setActive] = useState(
+  const [internalActive, setInternalActive] = useState(
     Math.min(Math.max(defaultIndex, 0), Math.max(count - 1, 0)),
   )
+  const active = activeIndex ?? internalActive
+  const setActive = (index: number) => {
+    if (activeIndex === undefined) setInternalActive(index)
+    onActiveChange?.(index)
+  }
   const prefersReduced =
     typeof window !== 'undefined' &&
     window.matchMedia('(prefers-reduced-motion: reduce)').matches
@@ -230,6 +239,7 @@ function AccordionGallery({
   }
 
   const handleKeyDown = (index: number, event: KeyboardEvent<HTMLDivElement>) => {
+    if (event.target !== event.currentTarget) return;
     if (event.key === 'ArrowRight' || event.key === 'ArrowDown') {
       event.preventDefault()
       setActive((index + 1) % count)
@@ -254,7 +264,7 @@ function AccordionGallery({
         } as CSSProperties
       }
       role="list"
-      aria-label="Selected work gallery"
+      aria-label="Works accordion"
     >
       {items.map((item, index) => {
         const isActive = index === active
@@ -268,9 +278,9 @@ function AccordionGallery({
             style={{ borderRadius: `${radius}px` }}
             onClick={(event) => handleClick(index, event)}
             onPointerEnter={() => {
-              if (trigger === 'hover') setActive(index)
+              if (trigger === 'hover' && window.matchMedia('(min-width: 640px) and (hover: hover)').matches) setActive(index)
             }}
-            onFocus={() => setActive(index)}
+            onFocus={(event) => { if(event.target === event.currentTarget) setActive(index) }}
             onKeyDown={(event) => handleKeyDown(index, event)}
             role="listitem"
             tabIndex={0}

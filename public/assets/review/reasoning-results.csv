@@ -1,0 +1,9 @@
+measure,high,low
+completed_runs,18,18
+new_letters,18,17
+revisions_only,0,1
+median_runtime_seconds,118.74,70.74
+total_output_tokens,295374,179745
+human_evidence_passed_new_letters,12,11
+median_detail_characters,428,426
+passed_both_automated_reviews,17,15

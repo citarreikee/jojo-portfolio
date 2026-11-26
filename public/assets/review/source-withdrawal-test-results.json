@@ -1,0 +1,26 @@
+{
+  "date": "2026-11-26",
+  "suite": "backend.tests.test_company_retractions",
+  "count": 16,
+  "duration_seconds": 2.795,
+  "result": "OK",
+  "fixture": "Temporary isolated company data; deterministic substitute kernel",
+  "cases": [
+    "test_empty_http_delete_is_idempotent_and_actual_actor_only",
+    "test_pending_turn_and_stale_version_are_rejected",
+    "test_ordinary_chat_requires_correction_and_virtual_original_before_deletion",
+    "test_two_physical_revisions_remain_available_to_retraction",
+    "test_mixed_evidence_keeps_record_and_removes_only_selected_source",
+    "test_shared_and_private_scopes_do_not_leak_to_requester_or_each_other",
+    "test_invalid_outputs_fail_without_deleting_original_and_retry_recovers",
+    "test_revoked_initiator_needs_new_credential_to_retry",
+    "test_withdrawal_fences_send_replay_and_source_retry",
+    "test_restart_before_enqueue_and_backup_restore_preserve_pending_work",
+    "test_cleanup_failure_keeps_conversation_and_resumes_after_restart",
+    "test_other_withdrawals_wait_until_first_finishes",
+    "test_publication_history_material_copies_are_purged_and_backup_still_restores",
+    "test_late_dependency_is_recoverable_and_rebuilds_scope",
+    "test_cleanup_rejects_symlink_and_retains_conversation",
+    "test_normal_publication_cannot_reintroduce_withdrawn_evidence"
+  ]
+}

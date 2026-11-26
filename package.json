@@ -5,8 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite --config vite.config.ts",
-    "build": "tsc -b && vite build --config vite.config.ts",
-    "preview": "vite preview"
+    "build": "tsc -b && vite build --config vite.config.ts && NODE_ENV=production node scripts/build-pages.mjs",
+    "preview": "vite preview",
+    "check:seo": "node scripts/check-seo.mjs"
   },
   "dependencies": {
     "@react-three/drei": "^9.122.0",
@@ -16,7 +17,9 @@
     "autoprefixer": "latest",
     "gsap": "^3.13.0",
     "lucide-react": "latest",
+    "matter-js": "^0.20.0",
     "meshline": "^3.3.1",
+    "ogl": "^1.0.11",
     "postcss": "latest",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",

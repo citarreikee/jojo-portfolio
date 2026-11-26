@@ -19,7 +19,7 @@ import{g as Tt,D as Et,a as Be,l as Mn,c as kn,w as In,T as Tn,b as En}from"./li
           <p class="detail-quote">${T(r)}</p>
         </div>
       </div>
-      <div class="selection-meta"><span>${T(e.categoryLabel||e.category||"Agent")}</span><b>${T(e.statusLabel)}</b></div>
+      <div class="selection-meta"><span>${T(e.categoryLabel||e.category||"Agent")}</span><b>${T(e.statusLabel)}</b></div><button type="button" class="agent-source-link" data-profile-id="${T(e.id)}">View profile &amp; source ↗</button>
     `;return}if(n){se(n.requiredCapabilities).slice(0,5),(n.nodeAssignments||[]).map(i=>({...i,agent:t.agents.find(r=>r.id===i.agentId)||null})),n.artifacts,H.detailTab.innerHTML=`
       <div class="selection-head"><div class="tab-kicker">Live activity</div><button type="button" class="selection-close" data-clear-selection aria-label="Clear selection">×</button></div>
       <h2>${T(n.title)}</h2>

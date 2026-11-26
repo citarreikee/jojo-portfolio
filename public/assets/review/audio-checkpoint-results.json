@@ -1,0 +1,13 @@
+{
+  "source": "Existing Company Context diagnostic, 2026-11-26",
+  "audio_seconds": 654.69,
+  "speech_segments": 83,
+  "reused_chunks": 1,
+  "total_chunks": 3,
+  "last_end_ms": 654465,
+  "observed_anchors": 76,
+  "expected_anchors": 80,
+  "strict_accuracy_assertion": "FAILED",
+  "checkpoint_recovery": "verified in recorded diagnostic",
+  "limitation": "Synthetic audio; not a real meeting benchmark"
+}

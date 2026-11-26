@@ -1,0 +1,20 @@
+[
+  {
+    "registry": "https://reactbits.dev/r/Folder-JS-CSS.json",
+    "dependencies": [],
+    "files": {
+      "Folder.css": "74a8f213ad51cb946ffa66c48b9c157ad96f9e6e8a8ae78dc9b0056576fc44d6",
+      "Folder.jsx": "f621461e0f8c994fd1879c510586971e8984f7a33943240c538d647aab69ff57"
+    }
+  },
+  {
+    "registry": "https://reactbits.dev/r/FolderFloat-JS-CSS.json",
+    "dependencies": [
+      "matter-js@^0.20.0"
+    ],
+    "files": {
+      "FolderFloat.css": "15ccf0837e41eca5a3b1d0607643ea5eefbc0bb97b0a38fe061f4c090f73477b",
+      "FolderFloat.jsx": "de3b0831bf2d70e2b6c1f73ff63c260cc328b1604e14d037af7f55d0df942558"
+    }
+  }
+]

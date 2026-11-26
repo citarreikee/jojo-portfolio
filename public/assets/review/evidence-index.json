@@ -1,0 +1,72 @@
+{
+  "reviewed_on": "2026-11-26",
+  "publication_state": "Published portfolio evidence",
+  "records": [
+    {
+      "subject": "Zoi reasoning effort",
+      "source": "letter-quality/pi-low/report.md",
+      "kind": "18 saved high runs and 18 low runs; human evidence checks",
+      "limitation": "Small sample; high was retrospective; human review not blind"
+    },
+    {
+      "subject": "Zoi direct writing",
+      "source": "letter-quality/pi-low-direct/report.md",
+      "kind": "18 independent runs; bundled writing and premise changes",
+      "limitation": "Detail medians use different denominators; no accuracy improvement established"
+    },
+    {
+      "subject": "Company source withdrawal",
+      "source": "test_company_retractions.py; company-acceptance-audit.md",
+      "kind": "16 existing regression tests rerun successfully with temporary fixtures in 2.795 seconds; separate recorded project acceptance",
+      "limitation": "Deterministic substitute kernel; no production deletion; no universal model-correctness claim"
+    },
+    {
+      "subject": "Company audio recovery",
+      "source": "company-speech-resume-diagnostic.log; metrics.json",
+      "kind": "Synthetic 654.69-second recording; checkpoint restart",
+      "limitation": "76/80 anchors; strict accuracy assertion failed"
+    },
+    {
+      "subject": "EntroFlow navigation points",
+      "source": "Device integration conversation and gausium.bettle/readme.md",
+      "kind": "Real-device read-only observations and driver contract",
+      "limitation": "Not a navigation execution or docking test"
+    },
+    {
+      "subject": "EntroFlow design",
+      "source": "https://entroflow.ai/docs/intro; https://entroflow.ai/docs/how-entroflow-works; Robomix README",
+      "kind": "Published architecture and local implementation",
+      "limitation": "Design rationale, not measured context savings"
+    },
+    {
+      "subject": "ContextOS Memory Keeper preview",
+      "source": "context_os/src/components/TodayView.jsx; KeeperMark.jsx; styles/today.css; styles/brand.css; docs/frontend-design-system.md",
+      "kind": "Current source-derived Today scene and English interactive adaptation",
+      "limitation": "Explicit sample content, lightweight other views; no backend, no full product simulation"
+    },
+    {
+      "subject": "Wearable AI",
+      "source": "User attachments: 微信图片_20261126203438_10_11.jpg; 微信图片_20261126203517_11_11.jpg",
+      "kind": "Full design study and hardware prototype photographs combined into wearable-pair.webp",
+      "limitation": "Visual evidence only; no measured performance claim"
+    },
+    {
+      "subject": "AGuild public interface",
+      "source": "https://citarreikee.github.io/AGuild/; public GitHub issues and comments",
+      "kind": "Original public HTML, CSS and JS; current public quest snapshot used as offline fallback; cover captured from original UI",
+      "limitation": "Public upstream data may change; no authenticated account actions copied"
+    },
+    {
+      "subject": "AgentNetwork profile overlay",
+      "source": "https://jojo.entropyfield.com/agentnetwork/index.html and original detail page assets",
+      "kind": "Restored online network and selection panel with one embedded persona/source modal",
+      "limitation": "Source presentation added locally; no real task execution implied"
+    },
+    {
+      "subject": "Company Context media",
+      "source": "company-native.webp: running app with fictional demo workspace",
+      "kind": "Native application capture",
+      "limitation": "Fictional demo content; no private production records"
+    }
+  ]
+}
