@@ -167,8 +167,8 @@
   }
 }
 
-/* Story card layout; the React Bits source remains unchanged. */
-.story-lanyard{position:absolute;right:0;top:160px;width:44%;height:600px;z-index:10}
+/* Full-section canvas, as in the original badge, above the copy and following section. */
+.story-lanyard{position:absolute;inset:0;width:100%;height:100%;z-index:10;pointer-events:none}
 .story-copy>.grid{grid-template-columns:1fr;max-width:57%}
 .story-copy>.mt-20{max-width:53%}
-@media(max-width:767px){.story-section{display:flex;flex-direction:column}.story-copy{order:0;padding-bottom:24px}.story-copy>.grid,.story-copy>.mt-20{max-width:100%}.story-lanyard{position:relative;order:1;top:auto;right:auto;width:100%;height:600px;margin-top:0}}
+@media(max-width:767px){.story-section{display:flex;flex-direction:column}.story-copy{order:0;padding-bottom:24px}.story-copy>.grid,.story-copy>.mt-20{max-width:100%}.story-lanyard{position:relative;order:1;inset:auto;width:100%;height:600px;margin-top:0}}

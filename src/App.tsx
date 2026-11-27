@@ -418,6 +418,15 @@ function Hero() {
 function Story() {
   const storyRef = useRef<HTMLElement>(null)
   const [showLanyard, setShowLanyard] = useState(false)
+  const [mobileCard, setMobileCard] = useState(false)
+
+  useEffect(() => {
+    const media = window.matchMedia("(max-width: 767px)")
+    const sync = () => setMobileCard(media.matches)
+    sync()
+    media.addEventListener("change", sync)
+    return () => media.removeEventListener("change", sync)
+  }, [])
 
   useEffect(() => {
     const section = storyRef.current
@@ -448,8 +457,10 @@ function Story() {
             <Lanyard
               frontImage={publicPath('/assets/lanyard/jojo-front.webp')}
               backImage={publicPath('/assets/lanyard/jojo-back.webp')}
-              size={0.6}
-              strapLength={0.5}
+              cardHeight={360}
+              overflowBottom={600}
+              anchor={mobileCard ? "center" : "right"}
+              strapLength={mobileCard ? 0.5 : 0.8}
               breeze={0.5}
             />
           </Suspense>

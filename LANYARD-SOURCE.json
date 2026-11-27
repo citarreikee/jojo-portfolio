@@ -13,5 +13,17 @@
     "back": "White card with jojo.entropyfield.com at the bottom; no logo.",
     "referenceBack": "https://reactbits.dev/assets/card-back-D1NOXHyK.webp",
     "strap": "Default unbranded black woven strap; no logo."
+  },
+  "localChanges": {
+    "reason": "Restore the original full-section badge canvas and top-of-section suspension point after the React Bits upgrade.",
+    "implementation": [
+      "Optional fixed cardHeight and overflowBottom framing with camera view offset.",
+      "Full-width Story layer above text, with extended bottom drawing area.",
+      "Document pointer picking lets transparent canvas areas pass through to page controls."
+    ],
+    "files": {
+      "Lanyard.jsx": "8375c93613d62a5800b0d32025bf298017798d16f7e96dff1687e5ec9ba7bf62",
+      "Lanyard.css": "74386c76abda84d9ac21d5fec503ffd9449ebdf07523f746398e9bc1b9089f7c"
+    }
   }
 }
