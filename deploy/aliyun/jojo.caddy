@@ -1,5 +1,20 @@
 
 jojo.entropyfield.com {
+    # Targeted crawl diagnostics: exclude application and webhook traffic.
+    log {
+        output file /var/log/caddy/jojo-crawl.json {
+            roll_size 5MiB
+            roll_keep 2
+        }
+        format filter {
+            wrap json
+            fields {
+                request>headers delete
+            }
+        }
+    }
+    @notCrawl not path / /robots.txt /sitemap.xml
+    log_skip @notCrawl
     encode zstd gzip
     @private path /.deployed-revision /.git/*
     handle @private {
