@@ -1,0 +1,10 @@
+{
+  "registry": "https://reactbits.dev/r/Lanyard-JS-CSS.json",
+  "dependencies": [
+    "three@^0.180.0"
+  ],
+  "files": {
+    "Lanyard.css": "25678081ba329fe4f4c8730351e68b023e028a673eda5a4638199f79eec5b463",
+    "Lanyard.jsx": "c5d3750b82111c400c8b1ae564fafee71f43012fbf86e2001aa4ff2d7912ed4c"
+  }
+}

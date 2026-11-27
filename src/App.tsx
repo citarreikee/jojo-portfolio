@@ -440,28 +440,24 @@ function Story() {
     <section
       ref={storyRef}
       id="story"
-      className="relative min-h-[100dvh] text-cream"
+      className="story-section relative min-h-[100dvh] text-cream"
     >
-      <div className="pointer-events-auto absolute inset-x-0 top-0 z-10 h-[100dvh] w-full">
+      <div className="story-lanyard" role="img" aria-label="Jojo photo card, @citarreikee. Drag to swing; click to flip.">
         {showLanyard && (
           <Suspense fallback={<div className="h-full w-full" aria-hidden="true" />}>
             <Lanyard
-              position={[0, 0, 24]}
-              gravity={[0, -40, 0]}
-              fov={11.5}
-              frontImage={publicPath('/assets/story-badge-front.png')}
-              backImage={publicPath('/assets/story-badge-back.png')}
-              imageFit="cover"
-              lanyardWidth={1}
-              anchor={[2.35, 2.38, 0]}
-              cardScale={2.25}
-              ropeLength={0.62}
+              frontImage={publicPath('/assets/lanyard/jojo-front.webp')}
+              backImage={publicPath('/assets/lanyard/jojo-back.webp')}
+              strapImage={publicPath('/assets/lanyard/jojo-band.png')}
+              size={0.6}
+              strapLength={0.4}
+              breeze={0.25}
             />
           </Suspense>
         )}
       </div>
 
-      <div className="relative z-0 px-6 py-24 sm:px-10 sm:py-36">
+      <div className="story-copy relative z-0 px-6 py-24 sm:px-10 sm:py-36">
         <SectionLabel index="01" title="Story" />
 
         <div className="grid gap-14 lg:grid-cols-[2fr_1fr] lg:gap-24">
