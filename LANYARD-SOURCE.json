@@ -6,5 +6,12 @@
   "files": {
     "Lanyard.css": "25678081ba329fe4f4c8730351e68b023e028a673eda5a4638199f79eec5b463",
     "Lanyard.jsx": "c5d3750b82111c400c8b1ae564fafee71f43012fbf86e2001aa4ff2d7912ed4c"
+  },
+  "cardArtwork": {
+    "front": "Jojo’s supplied photograph, foreground extracted locally and rendered with an eight-level grayscale palette and ordered pixel dithering. Official example composition with @citarreikee at the upper right. No React Bits logo.",
+    "referenceFront": "https://reactbits.dev/assets/card-front-Dd-DLzX6.webp",
+    "back": "White card with jojo.entropyfield.com at the bottom; no logo.",
+    "referenceBack": "https://reactbits.dev/assets/card-back-D1NOXHyK.webp",
+    "strap": "Default unbranded black woven strap; no logo."
   }
 }

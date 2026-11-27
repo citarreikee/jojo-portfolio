@@ -442,16 +442,15 @@ function Story() {
       id="story"
       className="story-section relative min-h-[100dvh] text-cream"
     >
-      <div className="story-lanyard" role="img" aria-label="Jojo photo card, @citarreikee. Drag to swing; click to flip.">
+      <div className="story-lanyard" role="img" aria-label="Jojo portrait card, @citarreikee. Drag to swing; click to flip.">
         {showLanyard && (
           <Suspense fallback={<div className="h-full w-full" aria-hidden="true" />}>
             <Lanyard
               frontImage={publicPath('/assets/lanyard/jojo-front.webp')}
               backImage={publicPath('/assets/lanyard/jojo-back.webp')}
-              strapImage={publicPath('/assets/lanyard/jojo-band.png')}
               size={0.6}
-              strapLength={0.4}
-              breeze={0.25}
+              strapLength={0.5}
+              breeze={0.5}
             />
           </Suspense>
         )}
